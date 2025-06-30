@@ -48,6 +48,7 @@ export class PokemonJotai {
         points[segment] = increased;
         previousSegment = segment;
       }
+      previousPoints = total;
     }
     return points;
   });
@@ -72,7 +73,7 @@ export class PokemonJotai {
     }
   });
 
-  readonly resetTaskAtom = atom(null, (get, set, taskNo: number) => {
+  readonly resetTaskAtom = atom(null, (_, set, taskNo: number) => {
     const normalTasks = this.normalTasks;
     if (taskNo < 0 || taskNo >= normalTasks.length) {
       throw new Error(`Invalid task number: ${taskNo}`);
@@ -81,7 +82,7 @@ export class PokemonJotai {
     set(task.resetAtom);
   });
 
-  readonly resetTasksAtom = atom(null, (get, set) => {
+  readonly resetTasksAtom = atom(null, (_, set) => {
     for (const task of this.normalTasks) {
       set(task.resetAtom);
     }
@@ -119,13 +120,13 @@ export class PokemonJotai {
   });
 
   constructor(
-    private readonly dictionaryAtom: PrimitiveAtom<Dictionary>,
-    pokedex: Pokedex,
+    readonly pokedex: Pokedex,
     readonly pokemon: Pokemon,
+    private readonly dictionaryAtom: PrimitiveAtom<Dictionary>,
   ) {
     this.id = pokemon;
     this.isArceus = pokemon === Pokemon.Arceus;
-    this.tasks = pokedex[this.id].tasks.map((task) => new TaskJotai(this.dictionaryAtom, task));
+    this.tasks = pokedex[this.id].tasks.map((task) => new TaskJotai(task, this.dictionaryAtom));
     this.catchTask = this.tasks[0];
     this.normalTasks = this.tasks.slice(0, this.tasks.length - 1);
     this.completeTask = this.tasks[this.tasks.length - 1];

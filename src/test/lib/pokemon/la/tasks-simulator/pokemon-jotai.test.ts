@@ -49,7 +49,7 @@ describe('PokemonJotai', () => {
     store = createStore();
     dictionaryAtom = atom(mockDictionary);
     const pokedex = createMockPokedex(Pokemon.Rowlet);
-    pokemonJotai = new PokemonJotai(dictionaryAtom, pokedex, Pokemon.Rowlet);
+    pokemonJotai = new PokemonJotai(pokedex, Pokemon.Rowlet, dictionaryAtom);
   });
 
   describe('Constructor and Basic Properties', () => {
@@ -63,7 +63,7 @@ describe('PokemonJotai', () => {
 
     it('should initialize with correct basic properties for Arceus', () => {
       const arceusPokedex = createArceusPokedex();
-      const arceusJotai = new PokemonJotai(dictionaryAtom, arceusPokedex, Pokemon.Arceus);
+      const arceusJotai = new PokemonJotai(arceusPokedex, Pokemon.Arceus, dictionaryAtom);
 
       expect(arceusJotai.id).toBe(Pokemon.Arceus);
       expect(arceusJotai.pokemon).toBe(Pokemon.Arceus);
@@ -88,7 +88,7 @@ describe('PokemonJotai', () => {
 
     it('should return Arceus name from dictionary', () => {
       const arceusPokedex = createArceusPokedex();
-      const arceusJotai = new PokemonJotai(dictionaryAtom, arceusPokedex, Pokemon.Arceus);
+      const arceusJotai = new PokemonJotai(arceusPokedex, Pokemon.Arceus, dictionaryAtom);
       const name = store.get(arceusJotai.nameAtom);
       expect(name).toBe(`Pokemon${Pokemon.Arceus}`);
     });
@@ -150,7 +150,7 @@ describe('PokemonJotai', () => {
 
     it('should return first segment for Arceus when caught', () => {
       const arceusPokedex = createArceusPokedex();
-      const arceusJotai = new PokemonJotai(dictionaryAtom, arceusPokedex, Pokemon.Arceus);
+      const arceusJotai = new PokemonJotai(arceusPokedex, Pokemon.Arceus, dictionaryAtom);
       
       store.set(arceusJotai.doTaskAtom, { taskNo: 0, progress: 1, segment: Segment.Village1 });
       
@@ -293,7 +293,7 @@ describe('PokemonJotai', () => {
 
     it('should handle Arceus special behavior', () => {
       const arceusPokedex = createArceusPokedex();
-      const arceusJotai = new PokemonJotai(dictionaryAtom, arceusPokedex, Pokemon.Arceus);
+      const arceusJotai = new PokemonJotai(arceusPokedex, Pokemon.Arceus, dictionaryAtom);
       
       // Arceus should complete immediately when caught
       store.set(arceusJotai.catchTask.doAtom, { progress: 1, segment: Segment.Village1 });
@@ -315,7 +315,7 @@ describe('PokemonJotai', () => {
       
       expect(pointsBySegment[Segment.Village1]).toBe(40); // Catch task: 2 × 20
       expect(pointsBySegment[Segment.Fieldlands1]).toBe(20); // Second task: actual behavior
-      expect(pointsBySegment[Segment.Village2]).toBe(40); // Third task: actual behavior
+      expect(pointsBySegment[Segment.Village2]).toBe(20); // Third task: actual behavior
     });
   });
 
@@ -326,7 +326,7 @@ describe('PokemonJotai', () => {
       } as Pokedex;
       
       // Empty task list should not throw - it creates empty arrays
-      const emptyJotai = new PokemonJotai(dictionaryAtom, emptyPokedex, Pokemon.Rowlet);
+      const emptyJotai = new PokemonJotai(emptyPokedex, Pokemon.Rowlet, dictionaryAtom);
       expect(emptyJotai.tasks).toHaveLength(0);
       expect(emptyJotai.normalTasks).toHaveLength(0);
     });
@@ -338,7 +338,7 @@ describe('PokemonJotai', () => {
         }
       } as Pokedex;
       
-      const singleTaskJotai = new PokemonJotai(dictionaryAtom, singleTaskPokedex, Pokemon.Rowlet);
+      const singleTaskJotai = new PokemonJotai(singleTaskPokedex, Pokemon.Rowlet, dictionaryAtom);
       
       expect(singleTaskJotai.tasks).toHaveLength(1);
       expect(singleTaskJotai.normalTasks).toHaveLength(0);

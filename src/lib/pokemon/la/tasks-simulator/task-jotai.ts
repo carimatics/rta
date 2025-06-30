@@ -1,9 +1,10 @@
 import { atom, PrimitiveAtom } from 'jotai';
 import { Move, MoveType, PokedexTask, Segment, Task } from '@/lib/pokemon/la/fixtures';
-import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator/points-by-segments';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { closedRangeSegments, rangeSegments } from '@/lib/pokemon/la/utils/la-range';
 import { clamp } from '@/lib/utils/range';
+
+export type TaskProgresses = Record<Segment, number>;
 
 export class TaskJotai {
   readonly id: Task;
@@ -16,7 +17,9 @@ export class TaskJotai {
   readonly last: number;
 
   readonly nameAtom = atom<string>((get) => get(this.dictionaryAtom).task(this.id, this.option));
-  readonly progressesAtom = atom<Record<Segment, number>>((get) => get(this._progressesAtom));
+  readonly pointsAtom = atom<number>((get) => get(this.achievedCountAtom) * this.reward);
+  private readonly _progressesAtom = atom<TaskProgresses>({} as TaskProgresses);
+  readonly progressesAtom = atom<TaskProgresses>((get) => get(this._progressesAtom));
   readonly progressAtom = atom<number>((get) => {
     const progresses = get(this._progressesAtom);
     return Object.keys(progresses)
@@ -27,9 +30,8 @@ export class TaskJotai {
     const progress = get(this.progressAtom);
     return this.requirements.findLastIndex((req) => req <= progress) + 1;
   });
-  readonly pointsAtom = atom<number>((get) => get(this.achievedCountAtom) * this.reward);
-  readonly resetAtom = atom(null, (get, set) => {
-    set(this._progressesAtom, {} as PointsBySegments);
+  readonly resetAtom = atom(null, (_, set) => {
+    set(this._progressesAtom, {} as TaskProgresses);
   });
   readonly pointsUntilSegmentAtom = atom((get) => {
     return (segment: Segment) => {
@@ -65,10 +67,9 @@ export class TaskJotai {
     set(this._progressesAtom, newProgresses);
   });
 
-  private readonly _progressesAtom = atom<PointsBySegments>({} as PointsBySegments);
   constructor(
-    private readonly dictionaryAtom: PrimitiveAtom<Dictionary>,
     readonly task: PokedexTask,
+    private readonly dictionaryAtom: PrimitiveAtom<Dictionary>,
   ) {
     this.id = task.id;
     this.option = task.option;

@@ -28,7 +28,7 @@ describe('TaskJotai', () => {
   beforeEach(() => {
     store = createStore();
     dictionaryAtom = atom(mockDictionary);
-    taskJotai = new TaskJotai(dictionaryAtom, createMockTask());
+    taskJotai = new TaskJotai(createMockTask(), dictionaryAtom);
   });
 
   describe('Constructor and Basic Properties', () => {
@@ -39,7 +39,7 @@ describe('TaskJotai', () => {
         reward: 15,
         requirements: [2, 4, 6, 8, 10],
       });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       expect(jotai.id).toBe(Task.SeenUseMove);
       expect(jotai.option).toBe(Move.Leafage);
@@ -53,14 +53,14 @@ describe('TaskJotai', () => {
 
     it('should handle task without option', () => {
       const task = createMockTask({ option: undefined });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       expect(jotai.option).toBeUndefined();
     });
 
     it('should handle task with MoveType option', () => {
       const task = createMockTask({ option: MoveType.Fire });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       expect(jotai.option).toBe(MoveType.Fire);
     });
@@ -74,7 +74,7 @@ describe('TaskJotai', () => {
 
     it('should return task name from dictionary with option', () => {
       const task = createMockTask({ option: Move.Leafage });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
       const name = store.get(jotai.nameAtom);
       expect(name).toBe(`Task1_${Move.Leafage}`);
     });
@@ -145,7 +145,7 @@ describe('TaskJotai', () => {
 
     it('should handle progress between requirements', () => {
       const task = createMockTask({ requirements: [1, 5, 10, 20, 50] });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
       store.set(jotai.doAtom, { progress: 7, segment: Segment.Village1 });
 
       const achievedCount = store.get(jotai.achievedCountAtom);
@@ -168,7 +168,7 @@ describe('TaskJotai', () => {
 
     it('should handle custom reward values', () => {
       const task = createMockTask({ reward: 15, requirements: [1, 2, 4] });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
       store.set(jotai.doAtom, { progress: 2, segment: Segment.Village1 });
 
       const points = store.get(jotai.pointsAtom);
@@ -239,7 +239,7 @@ describe('TaskJotai', () => {
 
     it('should clamp progress to min/max bounds', () => {
       const task = createMockTask({ requirements: [1, 2, 5] }); // max = 5
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       store.set(jotai.doAtom, { progress: 10, segment: Segment.Village1 });
 
@@ -327,7 +327,7 @@ describe('TaskJotai', () => {
         reward: 10,
         requirements: [3, 7, 15, 30, 100],
       });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       store.set(jotai.doAtom, { progress: 10, segment: Segment.Village1 });
 
@@ -341,7 +341,7 @@ describe('TaskJotai', () => {
 
     it('should handle edge case with empty requirements', () => {
       const task = createMockTask({ requirements: [] });
-      const jotai = new TaskJotai(dictionaryAtom, task);
+      const jotai = new TaskJotai(task, dictionaryAtom);
 
       expect(jotai.max).toBeUndefined();
       expect(jotai.first).toBeUndefined();
