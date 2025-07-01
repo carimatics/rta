@@ -2,7 +2,7 @@ import { Pokedex, Pokemon } from '@/lib/pokemon/la/fixtures';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { atom, createStore, useAtomValue, useSetAtom } from 'jotai';
 import { PokedexJotai } from '@/lib/pokemon/la/tasks-simulator/pokedex-jotai';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export function useTasksSimulator({
   pokedex,
@@ -14,7 +14,7 @@ export function useTasksSimulator({
   store?: ReturnType<typeof createStore>;
 }) {
   const dictionaryAtom = useMemo(() => atom(dictionary), [dictionary]);
-  const [pokedexJotai, setPokedexJotai] = useState(new PokedexJotai(pokedex, dictionaryAtom));
+  const pokedexJotai = useMemo(() => new PokedexJotai(pokedex, dictionaryAtom), [pokedex, dictionaryAtom]);
 
   const [currentPokemonId, setCurrentPokemon] = useState<Pokemon>(Pokemon.Rowlet);
   const getPokemon = useAtomValue(pokedexJotai.pokemonAtom, { store });
@@ -28,28 +28,28 @@ export function useTasksSimulator({
   const currentPokemonCompleted = useAtomValue(currentPokemon.completedAtom, { store });
   const currentPokemonCaught = useAtomValue(currentPokemon.caughtAtom, { store });
   const currentPokemonPoints = useAtomValue(currentPokemon.pointsAtom, { store });
-  const currentPokemonTasks = currentPokemon.tasks.map((task) => ({
-    id: task.id,
-    option: task.option,
-    reward: task.reward,
-    requirements: task.requirements,
-    min: task.min,
-    max: task.max,
-    first: task.first,
-    last: task.last,
-    name: store.get(task.nameAtom),
-    achievedCount: store.get(task.achievedCountAtom),
-    points: store.get(task.pointsAtom),
-    progresses: store.get(task.progressesAtom),
-    progress: store.get(task.progressAtom),
-  }));
+  const currentPokemonTasks = useMemo(
+    () =>
+      currentPokemon.tasks.map((task) => ({
+        id: task.id,
+        option: task.option,
+        reward: task.reward,
+        requirements: task.requirements,
+        min: task.min,
+        max: task.max,
+        first: task.first,
+        last: task.last,
+        name: store.get(task.nameAtom),
+        achievedCount: store.get(task.achievedCountAtom),
+        points: store.get(task.pointsAtom),
+        progresses: store.get(task.progressesAtom),
+        progress: store.get(task.progressAtom),
+      })),
+    [currentPokemon.tasks, store] // 状態変更をトリガーとして使用
+  );
   const currentPokemonDoTask = useSetAtom(currentPokemon.doTaskAtom, { store });
   const currentPokemonResetTask = useSetAtom(currentPokemon.resetTaskAtom, { store });
   const currentPokemonResetTasks = useSetAtom(currentPokemon.resetTasksAtom, { store });
-
-  useEffect(() => {
-    setPokedexJotai(new PokedexJotai(pokedex, dictionaryAtom));
-  }, [pokedex, dictionaryAtom]);
 
   return {
     setCurrentPokemon,
