@@ -382,7 +382,7 @@ describe('PokemonJotai', () => {
           expect(store.get(pokemonJotai.tasks[taskNo].pointsAtom)).toBe(60);
 
           // Reset and verify
-          store.set(pokemonJotai.tasks[taskNo].resetAtom);
+          store.set(pokemonJotai.resetTaskAtom, taskNo);
           expect(store.get(pokemonJotai.tasks[taskNo].progressAtom)).toBe(0);
           expect(store.get(pokemonJotai.tasks[taskNo].pointsAtom)).toBe(0);
         });
