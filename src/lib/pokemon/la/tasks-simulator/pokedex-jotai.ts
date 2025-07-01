@@ -1,8 +1,8 @@
 import { atom, PrimitiveAtom } from 'jotai';
-import { PokemonJotai } from '@/lib/pokemon/la/tasks-simulator/pokemon-jotai';
 import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator/points-by-segments';
 import { Pokedex, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
+import { PokemonJotai } from '@/lib/pokemon/la/tasks-simulator/pokemon-jotai';
 
 export class PokedexJotai {
   readonly pokedexAtom: PrimitiveAtom<PokemonJotai[]>;
@@ -18,9 +18,7 @@ export class PokedexJotai {
       const pt = get(pokemon.pointsBySegmentAtom);
       for (const segment of Object.keys(pt)) {
         const seg = parseInt(segment) as Segment;
-        if (!Object.hasOwn(points, seg)) {
-          points[seg] = 0;
-        }
+        points[seg] ??= 0;
         points[seg] += pt[seg];
       }
     }
