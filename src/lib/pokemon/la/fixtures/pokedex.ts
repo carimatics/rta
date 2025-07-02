@@ -10,14 +10,14 @@ export interface PokedexTask {
   readonly requirements: number[];
 }
 
-export type Pokedex = Record<
+export type PokedexFixture = Record<
   Pokemon,
   {
     tasks: PokedexTask[];
   }
 >;
 
-export const pokedex: Pokedex = {
+export const pokedex: PokedexFixture = {
   [Pokemon.Rowlet]: {
     tasks: [
       {
