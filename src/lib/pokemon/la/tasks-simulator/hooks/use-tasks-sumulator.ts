@@ -2,7 +2,7 @@ import { Move, MoveType, PokedexFixture, Pokemon, Segment, Task } from '@/lib/po
 import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { atomWithImmer } from 'jotai-immer';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAtom } from 'jotai';
 import { clamp } from '@/lib/utils/range';
 import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
@@ -51,7 +51,7 @@ function createPokedexStateAtom(
   return atomWithImmer<PokedexState>({
     pages: Object.keys(fixture)
       .map((id) => parseInt(id) as Pokemon)
-      .sort()
+      .sort((a, b) => a - b)
       .map((pokemon) => ({
         id: pokemon,
         name: dictionary.pokemon(pokemon),
@@ -106,7 +106,7 @@ export function useTasksSimulator(
   const _fixture = useMemo(() => fixture, [fixture]);
   const _dictionary = useMemo(() => dictionary, [dictionary]);
   
-  const pokedexAtom = useMemo(() => createPokedexStateAtom(_fixture, _dictionary), [_fixture]);
+  const [pokedexAtom, setPokedexAtom] = useState(createPokedexStateAtom(_fixture, _dictionary));
   const [pokedex, setPokedex] = useAtom(pokedexAtom);
 
   const getPokemon = useCallback((pokemon: Pokemon): PokedexPokemonState | undefined => {
@@ -259,12 +259,14 @@ export function useTasksSimulator(
   }, [resetTask, pokedex.pages]);
 
   const resetAll = useCallback(() => {
-    pokedex.pages.forEach((page) => {
-      resetPokemon({ pokemon: page.id });
-    });
-  }, [resetPokemon, pokedex.pages]);
+    setPokedexAtom(createPokedexStateAtom(_fixture, _dictionary));
+  }, [setPokedexAtom, _fixture, _dictionary]);
 
   // updaters
+  useEffect(() => {
+    setPokedexAtom(createPokedexStateAtom(_fixture, _dictionary));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_fixture, setPokedexAtom]);
   useEffect(() => {
     setPokedex((draft) => {
       draft.pages.forEach((page) => {
