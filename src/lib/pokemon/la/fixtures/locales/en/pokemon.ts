@@ -1,9 +1,9 @@
 export const pokemons = [
   '',
-  'Gowlet',
-  'Gartrix',
-  'Gecidueye',
-  'Gyndaquil',
+  'Rowlet',
+  'Dartrix',
+  'Decidueye',
+  'Cyndaquil',
   'Quilava',
   'Typhlosion',
   'Oshawott',
