@@ -109,6 +109,10 @@ export function useTasksSimulator(
   const pokedexAtom = useMemo(() => createPokedexStateAtom(_fixture, _dictionary), [_fixture]);
   const [pokedex, setPokedex] = useAtom(pokedexAtom);
 
+  const getPokemon = useCallback((pokemon: Pokemon): PokedexPokemonState | undefined => {
+    return pokedex.pages.find((page) => page.id === pokemon);
+  }, [pokedex]);
+
   const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({ pokemon, taskNo, segment, progress }) => {
     setPokedex((draft) => {
       const poke = draft.pages.find((page) => page.id === pokemon);
@@ -275,6 +279,7 @@ export function useTasksSimulator(
   return {
     pokedex,
     doTask,
+    getPokemon,
     resetTask,
     resetPokemon,
     resetAll,
