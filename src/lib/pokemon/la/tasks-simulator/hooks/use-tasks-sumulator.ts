@@ -2,7 +2,7 @@ import { Move, MoveType, PokedexFixture, Pokemon, Segment, Task } from '@/lib/po
 import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { atomWithImmer } from 'jotai-immer';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useAtom } from 'jotai';
 import { clamp } from '@/lib/utils/range';
 import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
