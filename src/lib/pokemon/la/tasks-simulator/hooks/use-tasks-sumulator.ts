@@ -211,14 +211,18 @@ export function useTasksSimulator(
       }
 
       // update points
-      poke.points = poke.tasks.reduce((acc, task) => acc + task.points, 0);
+      poke.points = poke.caught
+        ? poke.tasks.reduce((acc, task) => acc + task.points, 0)
+        : 0;
 
       // update pointsBySegments
       poke.pointsBySegments = {} as PointsBySegments;
-      for (const seg of closedRangeSegments()) {
-        const points = poke.tasks.reduce((acc, task) => acc + (task.pointsBySegments[seg] ?? 0), 0);
-        if (points > 0) {
-          poke.pointsBySegments[seg] = points;
+      if (poke.caught) {
+        for (const seg of closedRangeSegments()) {
+          const points = poke.tasks.reduce((acc, task) => acc + (task.pointsBySegments[seg] ?? 0), 0);
+          if (points > 0) {
+            poke.pointsBySegments[seg] = points;
+          }
         }
       }
 
