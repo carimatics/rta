@@ -113,26 +113,19 @@ export function useTasksSimulator(
     return pokedex.pages.find((page) => page.id === pokemon);
   }, [pokedex]);
 
-  const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({ pokemon, taskNo, segment, progress }) => {
+  const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({ pokemon: p, taskNo, segment, progress }) => {
     setPokedex((draft) => {
-      const poke = draft.pages.find((page) => page.id === pokemon);
-
-      // check pokemon
-      if (!poke) {
+      const pokemon = draft.pages.find((page) => page.id === p);
+      if (!pokemon) {
         return;
       }
 
-      const normalTasks = poke.tasks.slice(0, poke.tasks.length - 1);
-
-      // check taskNo
+      const normalTasks = pokemon.tasks.slice(0, pokemon.tasks.length - 1);
       if (taskNo < 0 || taskNo >= normalTasks.length) {
         return;
       }
 
-      // update target task
-      const targetTask = normalTasks[taskNo];
-
-      const updateTask = (task: typeof targetTask, progress: number, segment: Segment) => {
+      const updateTask = (task: typeof pokemon.tasks[number], progress: number, segment: Segment) => {
         const newProgress = clamp(progress, task.min, task.max);
 
         // update progresses
@@ -179,68 +172,81 @@ export function useTasksSimulator(
           previousPoints = currentPoints;
         }
       };
-      updateTask(targetTask, progress, segment);
+      updateTask(normalTasks[taskNo], progress, segment);
 
-      const catchTask = poke.tasks[0];
-      poke.caught = catchTask.progress > 0;
+      const updatePokemon = () => {
+        const catchTask = pokemon.tasks[0];
 
-      const calcSegmentArceusCaught = (task: typeof catchTask) => {
-        if (!poke.isArceus) {
+        // update caught
+        pokemon.caught = catchTask.progress > 0;
+
+        // update completed
+        const calcSegmentArceusCaught = () => {
+          if (!pokemon.isArceus) {
+            return undefined;
+          }
+          const segments = Object.keys(catchTask.progresses);
+          if (segments.length === 1) {
+            return parseInt(segments[0]) as Segment;
+          }
           return undefined;
+        };
+        const calsSegmentCompleted = () => {
+          let totalPoints = 0;
+          for (const segment of closedRangeSegments()) {
+            totalPoints += normalTasks.reduce(
+              (acc, task) => acc + (task.pointsBySegments[segment] ?? 0),
+              0
+            );
+            if (totalPoints >= 100) {
+              return segment;
+            }
+          }
+          return undefined;
+        };
+        pokemon.segmentCompleted = calcSegmentArceusCaught() ?? calsSegmentCompleted();
+        pokemon.completed = pokemon.caught && pokemon.segmentCompleted !== undefined;
+
+        // update complete task
+        const completeTask = pokemon.tasks[pokemon.tasks.length - 1];
+        if (pokemon.completed) {
+          updateTask(completeTask, 1, pokemon.segmentCompleted!);
+        } else {
+          updateTask(completeTask, 0, Segment.Highlands3);
         }
-        const segment = Object.keys(task.progresses);
-        if (segment.length === 1) {
-          return parseInt(segment[0]) as Segment;
-        }
-        return undefined;
-      };
-      const calcSegmentCompleted = (tasks: typeof normalTasks) => {
-        let totalPoints = 0;
-        for (const seg of closedRangeSegments()) {
-          totalPoints += tasks.reduce((acc, task) => acc + (task.pointsBySegments[seg] ?? 0), 0);
-          if (totalPoints >= 100) {
-            return seg;
+
+        // update points
+        pokemon.points = pokemon.caught
+          ? pokemon.tasks.reduce((acc, task) => acc + task.points, 0)
+          : 0;
+
+        // update pointsBySegments
+        pokemon.pointsBySegments = {} as PointsBySegments;
+        if (pokemon.caught) {
+          for (const seg of closedRangeSegments()) {
+            const points = pokemon.tasks.reduce((acc, task) => acc + (task.pointsBySegments[seg] ?? 0), 0);
+            if (points > 0) {
+              pokemon.pointsBySegments[seg] = points;
+            }
           }
         }
-        return undefined;
       };
-      poke.segmentCompleted = calcSegmentArceusCaught(catchTask) ?? calcSegmentCompleted(normalTasks);
+      updatePokemon();
 
-      poke.completed = poke.caught && poke.segmentCompleted !== undefined;
-      const completeTask = poke.tasks[poke.tasks.length - 1];
-      if (poke.completed) {
-        updateTask(completeTask, 1, poke.segmentCompleted!);
-      } else {
-        updateTask(completeTask, 0, Segment.Highlands3);
-      }
+      const updatePokedex = () => {
+        // update total points
+        draft.points = draft.pages.reduce((acc, page) => acc + page.points, 0);
 
-      // update points
-      poke.points = poke.caught
-        ? poke.tasks.reduce((acc, task) => acc + task.points, 0)
-        : 0;
-
-      // update pointsBySegments
-      poke.pointsBySegments = {} as PointsBySegments;
-      if (poke.caught) {
+        // update total pointsBySegments
+        draft.pointsBySegments = {} as PointsBySegments;
         for (const seg of closedRangeSegments()) {
-          const points = poke.tasks.reduce((acc, task) => acc + (task.pointsBySegments[seg] ?? 0), 0);
+          const points = draft.pages.reduce((acc, page) => acc + (page.pointsBySegments[seg] ?? 0), 0);
           if (points > 0) {
-            poke.pointsBySegments[seg] = points;
+            draft.pointsBySegments[seg] = points;
           }
         }
-      }
-
-      // update total points
-      draft.points = draft.pages.reduce((acc, page) => acc + page.points, 0);
-
-      // update total pointsBySegments
-      draft.pointsBySegments = {} as PointsBySegments;
-      for (const seg of closedRangeSegments()) {
-        const points = draft.pages.reduce((acc, page) => acc + (page.pointsBySegments[seg] ?? 0), 0);
-        if (points > 0) {
-          draft.pointsBySegments[seg] = points;
-        }
-      }
+      };
+      updatePokedex();
     });
   }, [setPokedex]);
 
