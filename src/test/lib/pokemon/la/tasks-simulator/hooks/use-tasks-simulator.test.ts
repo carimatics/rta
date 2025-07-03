@@ -83,10 +83,10 @@ describe('useTasksSimulator', () => {
         { wrapper }
       );
 
-      expect(result.current.pokedex).toBeDefined();
-      expect(result.current.pokedex.pages).toHaveLength(3);
-      expect(result.current.pokedex.points).toBe(0);
-      expect(result.current.pokedex.pointsBySegments).toEqual({});
+      expect(result.current.pokedexState).toBeDefined();
+      expect(result.current.pokedexState.pages).toHaveLength(3);
+      expect(result.current.pokedexState.points).toBe(0);
+      expect(result.current.pokedexState.pointsBySegments).toEqual({});
     });
 
     it('should initialize Pokemon with correct initial state', () => {
@@ -208,7 +208,7 @@ describe('useTasksSimulator', () => {
         { wrapper }
       );
 
-      const initialState = result.current.pokedex;
+      const initialState = result.current.pokedexState;
 
       act(() => {
         result.current.doTask({
@@ -220,7 +220,7 @@ describe('useTasksSimulator', () => {
       });
 
       // State should remain unchanged
-      expect(result.current.pokedex).toEqual(initialState);
+      expect(result.current.pokedexState).toEqual(initialState);
     });
 
     it('should handle invalid task number gracefully', () => {
@@ -333,7 +333,7 @@ describe('useTasksSimulator', () => {
         });
       });
 
-      expect(result.current.pokedex.points).toBe(60); // Rowlet: 20, Pikachu: 40
+      expect(result.current.pokedexState.points).toBe(60); // Rowlet: 20, Pikachu: 40
     });
   });
 
@@ -507,17 +507,17 @@ describe('useTasksSimulator', () => {
         });
       });
 
-      expect(result.current.pokedex.points).toBe(100);
+      expect(result.current.pokedexState.points).toBe(100);
 
       // Reset all
       act(() => {
         result.current.resetAll();
       });
 
-      expect(result.current.pokedex.points).toBe(0);
-      expect(result.current.pokedex.pointsBySegments).toEqual({});
+      expect(result.current.pokedexState.points).toBe(0);
+      expect(result.current.pokedexState.pointsBySegments).toEqual({});
       
-      result.current.pokedex.pages.forEach((pokemon) => {
+      result.current.pokedexState.pages.forEach((pokemon) => {
         expect(pokemon.caught).toBe(false);
         expect(pokemon.completed).toBe(false);
         expect(pokemon.points).toBe(0);
@@ -534,7 +534,7 @@ describe('useTasksSimulator', () => {
         { wrapper }
       );
 
-      const initialState = result.current.pokedex;
+      const initialState = result.current.pokedexState;
 
       act(() => {
         result.current.resetPokemon({
@@ -543,7 +543,7 @@ describe('useTasksSimulator', () => {
       });
 
       // State should remain unchanged
-      expect(result.current.pokedex).toEqual(initialState);
+      expect(result.current.pokedexState).toEqual(initialState);
     });
   });
 
@@ -679,8 +679,8 @@ describe('useTasksSimulator', () => {
       expect(rowlet.segmentCompleted).toBeDefined();
       
       // Verify global aggregation
-      expect(result.current.pokedex.points).toBe(210);
-      expect(Object.keys(result.current.pokedex.pointsBySegments).length).toBe(3);
+      expect(result.current.pokedexState.points).toBe(210);
+      expect(Object.keys(result.current.pokedexState.pointsBySegments).length).toBe(3);
     });
 
     it('should maintain state consistency across multiple operations', () => {
@@ -725,11 +725,11 @@ describe('useTasksSimulator', () => {
       });
 
       // Verify final consistency
-      const totalIndividualPoints = result.current.pokedex.pages.reduce(
+      const totalIndividualPoints = result.current.pokedexState.pages.reduce(
         (sum, pokemon) => sum + pokemon.points,
         0
       );
-      expect(result.current.pokedex.points).toBe(totalIndividualPoints);
+      expect(result.current.pokedexState.points).toBe(totalIndividualPoints);
     });
   });
 });

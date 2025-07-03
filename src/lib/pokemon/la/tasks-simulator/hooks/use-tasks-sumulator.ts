@@ -106,15 +106,15 @@ export function useTasksSimulator(
   const _fixture = useMemo(() => fixture, [fixture]);
   const _dictionary = useMemo(() => dictionary, [dictionary]);
   
-  const [pokedexAtom, setPokedexAtom] = useState(createPokedexStateAtom(_fixture, _dictionary));
-  const [pokedex, setPokedex] = useAtom(pokedexAtom);
+  const [pokedexStateAtom, setPokedexStateAtom] = useState(createPokedexStateAtom(_fixture, _dictionary));
+  const [pokedexState, setPokedexState] = useAtom(pokedexStateAtom);
 
   const getPokemon = useCallback((pokemon: Pokemon): PokedexPokemonState | undefined => {
-    return pokedex.pages.find((page) => page.id === pokemon);
-  }, [pokedex]);
+    return pokedexState.pages.find((page) => page.id === pokemon);
+  }, [pokedexState]);
 
   const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({ pokemon: p, taskNo, segment, progress }) => {
-    setPokedex((draft) => {
+    setPokedexState((draft) => {
       const pokemon = draft.pages.find((page) => page.id === p);
       if (!pokemon) {
         return;
@@ -248,33 +248,33 @@ export function useTasksSimulator(
       };
       updatePokedex();
     });
-  }, [setPokedex]);
+  }, [setPokedexState]);
 
   const resetTask = useCallback(({ pokemon, taskNo }: TasksSimulatorResetTaskProps) => {
     doTask({ pokemon, taskNo, segment: Segment.Highlands3, progress: 0 });
   }, [doTask]);
 
   const resetPokemon = useCallback(({ pokemon }: TasksSimulatorResetPokemonProps) => {
-    const poke = pokedex.pages.find((page) => page.id === pokemon);
+    const poke = pokedexState.pages.find((page) => page.id === pokemon);
     if (!poke) {
       return;
     }
     for (let taskNo = 0; taskNo < poke.tasks.length - 1; taskNo++) {
       resetTask({ pokemon, taskNo });
     }
-  }, [resetTask, pokedex.pages]);
+  }, [resetTask, pokedexState.pages]);
 
   const resetAll = useCallback(() => {
-    setPokedexAtom(createPokedexStateAtom(_fixture, _dictionary));
-  }, [setPokedexAtom, _fixture, _dictionary]);
+    setPokedexStateAtom(createPokedexStateAtom(_fixture, _dictionary));
+  }, [setPokedexStateAtom, _fixture, _dictionary]);
 
   // updaters
   useEffect(() => {
-    setPokedexAtom(createPokedexStateAtom(_fixture, _dictionary));
+    setPokedexStateAtom(createPokedexStateAtom(_fixture, _dictionary));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [_fixture, setPokedexAtom]);
+  }, [_fixture, setPokedexStateAtom]);
   useEffect(() => {
-    setPokedex((draft) => {
+    setPokedexState((draft) => {
       draft.pages.forEach((page) => {
         page.name = _dictionary.pokemon(page.id);
         page.tasks.forEach((task) => {
@@ -282,10 +282,10 @@ export function useTasksSimulator(
         });
       });
     });
-  }, [_dictionary, setPokedex]);
+  }, [_dictionary, setPokedexState]);
 
   return {
-    pokedex,
+    pokedexState,
     doTask,
     getPokemon,
     resetTask,
