@@ -188,8 +188,16 @@ function TaskSimulatorContent() {
                         </svg>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="bg-tertiary/10 border border-tertiary/20 rounded-lg p-3">
-                          <div className="font-bold text-on-surface">
+                        <div className={`rounded-lg p-3 ${
+                          pokedexState.points >= targetPoints 
+                            ? 'bg-tertiary/10 border border-tertiary/20' 
+                            : 'bg-error/10 border border-error/20'
+                        }`}>
+                          <div className={`font-bold ${
+                            pokedexState.points >= targetPoints 
+                              ? 'text-tertiary' 
+                              : 'text-error'
+                          }`}>
                             Final Total: {pokedexState.points}
                           </div>
                           <div className="text-xs text-on-surface-variant mt-1">
