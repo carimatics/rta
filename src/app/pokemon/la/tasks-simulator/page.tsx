@@ -18,7 +18,7 @@ import { TaskTable } from '@/lib/pokemon/la/tasks-simulator/components/task-tabl
 const store = createStore();
 
 function TaskSimulatorContent() {
-  const [language] = useState<Language>(Language.Ja);
+  const [language, setLanguage] = useState<Language>(Language.Ja);
   const dictionary = useMemo(() => getDictionary(language), [language])
   const {
     pokedexState,
@@ -76,6 +76,17 @@ function TaskSimulatorContent() {
               </span>
             </div>
             <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-on-surface-variant">Language:</span>
+                <select 
+                  value={language} 
+                  onChange={(e) => setLanguage(parseInt(e.target.value) as Language)}
+                  className="text-sm bg-surface-container-high text-on-surface border border-outline/30 rounded px-2 py-1"
+                >
+                  <option value={Language.Ja}>日本語</option>
+                  <option value={Language.En}>English</option>
+                </select>
+              </div>
               <div className="text-sm text-on-surface-variant">
                 Total Points: <span className="font-bold text-tertiary">{pokedexState.points}</span>
               </div>
