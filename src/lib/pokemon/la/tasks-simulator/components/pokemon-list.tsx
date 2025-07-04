@@ -10,7 +10,7 @@ export interface PokemonListProps extends ComponentProps<'ul'> {
 
 export function PokemonList({ className, pokedex, onClickPokemon, ...props }: PokemonListProps) {
   return (
-    <ul className={twMerge('w-80 h-[calc(100vh-112px)] flex flex-col overflow-y-auto p-1', className)} {...props}>
+    <ul className={twMerge('w-full h-[calc(100vh-112px)] flex flex-col overflow-y-auto p-1', className)} {...props}>
       {pokedex.map((pokemon) => (
         <li className="mx-4 my-2" key={pokemon.id}>
           <PokemonListCard pokemon={pokemon} onClick={onClickPokemon} />
