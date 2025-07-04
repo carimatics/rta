@@ -67,7 +67,7 @@ function TaskSimulatorContent() {
     <div data-theme="pokemon-la" className="min-h-screen bg-surface-container">
       {/* Header */}
       <header className="bg-surface border-b border-outline/20 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+        <div className="max-w-none mx-auto px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <h1 className="text-2xl font-bold text-on-surface">Tasks Simulator</h1>
@@ -87,7 +87,7 @@ function TaskSimulatorContent() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6">
+      <div className="max-w-none mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6 h-[calc(100vh-8rem)]">
           {/* Pokemon List Sidebar */}
           <aside className="col-span-3 bg-surface rounded-2xl shadow-lg overflow-hidden">
@@ -99,7 +99,7 @@ function TaskSimulatorContent() {
           </aside>
 
           {/* Main Content */}
-          <main className="col-span-6 flex flex-col gap-6">
+          <main className="col-span-7 flex flex-col gap-6">
             {/* Control Panel */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <PrimaryContainer className="flex items-center justify-center min-h-[4rem]">
@@ -147,7 +147,7 @@ function TaskSimulatorContent() {
           </main>
 
           {/* Timeline Sidebar */}
-          <aside className="col-span-3 bg-surface rounded-2xl shadow-lg overflow-hidden">
+          <aside className="col-span-2 bg-surface rounded-2xl shadow-lg overflow-hidden">
             <div className="h-full flex flex-col">
               <div className="p-4 border-b border-outline/20">
                 <h2 className="text-lg font-bold text-on-surface">Progress Timeline</h2>
