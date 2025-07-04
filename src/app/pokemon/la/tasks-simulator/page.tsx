@@ -275,49 +275,46 @@ function TaskSimulatorContent() {
   );
 
   const renderTasksTab = () => (
-    <div className="flex flex-col gap-6 h-full">
-      {/* Current Segment Setting */}
-      <PrimaryContainer>
-        <div className="p-4">
-          <h4 className="font-semibold text-on-surface mb-3">Current Segment</h4>
-          <SegmentSelect
-            segments={segments}
-            currentSegment={currentSegment}
-            updateSegment={(segment) => setCurrentSegment(segment)} />
-        </div>
-      </PrimaryContainer>
-
-      {/* Task Management */}
-      <PrimaryContainer className="flex-1">
-        <div className="p-4 h-full flex flex-col">
-          <div className="flex items-center justify-between mb-4">
+    <PrimaryContainer className="h-full">
+      <div className="p-4 h-full flex flex-col">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-4">
             <h3 className="text-lg font-bold text-on-surface">Task Management</h3>
-            <div className="flex items-center gap-4">
-              <PokemonInfo pokemon={currentPokemon!} />
-              <Button
-                color="error"
-                className="size-10 flex items-center justify-center rounded-full"
-                onClick={() => resetPokemon({ pokemon: currentPokemon!.id })}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="16px"
-                  viewBox="0 -960 960 960"
-                  width="16px"
-                  fill="currentColor">
-                  <path
-                    d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
-                </svg>
-              </Button>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-on-surface-variant">Segment:</span>
+              <div className="min-w-0">
+                <SegmentSelect
+                  segments={segments}
+                  currentSegment={currentSegment}
+                  updateSegment={(segment) => setCurrentSegment(segment)} />
+              </div>
             </div>
           </div>
-          <div className="flex-1 overflow-x-auto">
-            <TaskTable
-              pokemon={currentPokemon!}
-              updateProgress={updateProgress} />
+          <div className="flex items-center gap-4">
+            <PokemonInfo pokemon={currentPokemon!} />
+            <Button
+              color="error"
+              className="size-10 flex items-center justify-center rounded-full"
+              onClick={() => resetPokemon({ pokemon: currentPokemon!.id })}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="16px"
+                viewBox="0 -960 960 960"
+                width="16px"
+                fill="currentColor">
+                <path
+                  d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
+              </svg>
+            </Button>
           </div>
         </div>
-      </PrimaryContainer>
-    </div>
+        <div className="flex-1 overflow-x-auto">
+          <TaskTable
+            pokemon={currentPokemon!}
+            updateProgress={updateProgress} />
+        </div>
+      </div>
+    </PrimaryContainer>
   );
 
 
