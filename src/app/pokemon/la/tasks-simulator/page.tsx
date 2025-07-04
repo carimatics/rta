@@ -112,7 +112,7 @@ function TaskSimulatorContent() {
           </aside>
 
           {/* Main Content */}
-          <main className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
+          <main className="lg:col-span-6 flex flex-col gap-4 sm:gap-6">
             {/* Control Panel */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <PrimaryContainer className="flex items-center justify-center min-h-[4rem]">
@@ -160,7 +160,7 @@ function TaskSimulatorContent() {
           </main>
 
           {/* Timeline Sidebar */}
-          <aside className="lg:col-span-2 bg-surface rounded-2xl shadow-lg overflow-hidden h-64 lg:h-auto">
+          <aside className="lg:col-span-3 bg-surface rounded-2xl shadow-lg overflow-hidden h-64 lg:h-auto">
             <div className="h-full flex flex-col">
               <div className="p-2 sm:p-4 border-b border-outline/20">
                 <h2 className="text-base sm:text-lg font-bold text-on-surface">Progress Timeline</h2>
@@ -173,7 +173,8 @@ function TaskSimulatorContent() {
                         <div className="absolute left-4 top-8 w-0.5 h-full bg-outline/30"></div>
                       )}
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                        <div
+                          className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
                           <div className="w-3 h-3 bg-on-primary rounded-full"></div>
                         </div>
                         <div className="flex-1 min-w-0">
@@ -190,11 +191,12 @@ function TaskSimulatorContent() {
                       </div>
                     </div>
                   ))}
-                  
+
                   {/* Final Total */}
                   <div className="relative">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-tertiary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                      <div
+                        className="w-8 h-8 bg-tertiary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px"
                              fill="currentColor">
                           <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
@@ -202,13 +204,13 @@ function TaskSimulatorContent() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className={`rounded-lg p-3 ${
-                          pokedexState.points >= targetPoints 
-                            ? 'bg-tertiary/10 border border-tertiary/20' 
+                          pokedexState.points >= targetPoints
+                            ? 'bg-tertiary/10 border border-tertiary/20'
                             : 'bg-error/10 border border-error/20'
                         }`}>
                           <div className={`font-bold ${
-                            pokedexState.points >= targetPoints 
-                              ? 'text-tertiary' 
+                            pokedexState.points >= targetPoints
+                              ? 'text-tertiary'
                               : 'text-error'
                           }`}>
                             Final Total: {pokedexState.points}
