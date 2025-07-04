@@ -1,0 +1,34 @@
+import { ComponentProps } from 'react';
+import { Segment } from '@/lib/pokemon/la/fixtures';
+import { twMerge } from 'tailwind-merge';
+
+export interface SegmentSelectProps extends ComponentProps<'div'> {
+  segments: { id: Segment; name: string }[];
+  currentSegment: Segment;
+  updateSegment: (segment: Segment) => void;
+}
+
+export function SegmentSelect({
+  segments,
+  currentSegment,
+  updateSegment,
+  className,
+  ...props
+}: SegmentSelectProps) {
+  return (
+    <div className={twMerge('flex items-center gap-2', className)} {...props}>
+      <div className="font-bold">現在区間</div>
+      <select
+        className="border-outline rounded-md border-1 px-1 py-2 shadow-md"
+        value={currentSegment}
+        onChange={(e) => updateSegment(parseInt(e.target.value) as Segment)}
+      >
+        {segments.map((segment) => (
+          <option key={segment.id} value={segment.id}>
+            {segment.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}

@@ -1,4 +1,4 @@
-import { Move, MoveType, PokedexFixture, Pokemon, Segment, Task } from '@/lib/pokemon/la/fixtures';
+import { PokedexFixture, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
 import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator';
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { atomWithImmer } from 'jotai-immer';
@@ -6,43 +6,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAtom } from 'jotai';
 import { clamp } from '@/lib/utils/range';
 import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
-
-export type PokedexPokemonTaskProgress = Record<Segment, number>;
-
-export interface PokedexPokemonTaskState {
-  readonly id: Task;
-  readonly option?: Move | MoveType;
-  readonly name: string;
-  readonly points: number;
-  readonly pointsBySegments: PointsBySegments;
-  readonly reward: number;
-  readonly achievedCount: number;
-  readonly requirements: number[];
-  readonly progress: number;
-  readonly progresses: PokedexPokemonTaskProgress;
-  readonly min: number;
-  readonly max: number;
-  readonly first: number;
-  readonly last: number;
-}
-
-export interface PokedexPokemonState {
-  readonly id: Pokemon;
-  readonly name: string;
-  readonly isArceus: boolean;
-  readonly completed: boolean;
-  readonly segmentCompleted: Segment | undefined;
-  readonly caught: boolean;
-  readonly points: number;
-  readonly pointsBySegments: PointsBySegments;
-  readonly tasks: PokedexPokemonTaskState[];
-}
-
-export interface PokedexState {
-  readonly pages: PokedexPokemonState[];
-  readonly points: number;
-  readonly pointsBySegments: PointsBySegments;
-}
+import {
+  PokedexPokemonState,
+  PokedexPokemonTaskProgress,
+  PokedexState
+} from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
 
 function createPokedexStateAtom(
   fixture: PokedexFixture,
@@ -105,7 +73,7 @@ export function useTasksSimulator(
 ) {
   const _fixture = useMemo(() => fixture, [fixture]);
   const _dictionary = useMemo(() => dictionary, [dictionary]);
-  
+
   const [pokedexStateAtom, setPokedexStateAtom] = useState(createPokedexStateAtom(_fixture, _dictionary));
   const [pokedexState, setPokedexState] = useAtom(pokedexStateAtom);
 
@@ -113,7 +81,12 @@ export function useTasksSimulator(
     return pokedexState.pages.find((page) => page.id === pokemon);
   }, [pokedexState]);
 
-  const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({ pokemon: p, taskNo, segment, progress }) => {
+  const doTask: (props: TasksSimulatorDoTaskProps) => void = useCallback(({
+    pokemon: p,
+    taskNo,
+    segment,
+    progress
+  }) => {
     setPokedexState((draft) => {
       const pokemon = draft.pages.find((page) => page.id === p);
       if (!pokemon) {
