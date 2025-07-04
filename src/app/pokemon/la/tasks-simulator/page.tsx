@@ -153,14 +153,14 @@ function TaskSimulatorContent() {
                 <h2 className="text-lg font-bold text-on-surface">Progress Timeline</h2>
               </div>
               <div className="flex-1 overflow-y-auto p-4">
-                <div className="space-y-3">
+                <div className="relative">
                   {timelineSegments.map((segment, index) => (
-                    <div key={segment.id} className="relative">
-                      {index < timelineSegments.length - 1 && (
-                        <div className="absolute left-4 top-8 w-0.5 h-6 bg-outline/30"></div>
+                    <div key={segment.id} className="relative pb-6">
+                      {index < timelineSegments.length && (
+                        <div className="absolute left-4 top-8 w-0.5 h-full bg-outline/30"></div>
                       )}
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
                           <div className="w-3 h-3 bg-on-primary rounded-full"></div>
                         </div>
                         <div className="flex-1 min-w-0">
@@ -181,7 +181,7 @@ function TaskSimulatorContent() {
                   {/* Final Total */}
                   <div className="relative">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-tertiary rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-tertiary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px"
                              fill="currentColor">
                           <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />

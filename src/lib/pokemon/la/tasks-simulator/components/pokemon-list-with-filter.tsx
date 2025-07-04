@@ -28,11 +28,12 @@ export function PokemonListWithFilter({
   return (
     <div className={className} {...props}>
       <div className="mx-4 my-2">
-        <div className="flex">
+        <div className="flex gap-2">
           <SearchInput
+            className="flex-1 min-w-0"
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)} />
-          <Button color="error" className="ml-2" onClick={onClickClearInput}>Clear</Button>
+          <Button color="error" className="flex-shrink-0" onClick={onClickClearInput}>Clear</Button>
         </div>
       </div>
       <div className="my-1">
