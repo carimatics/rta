@@ -28,7 +28,7 @@ function TaskSimulatorContent() {
   } = useTasksSimulator(pokedexFixture, dictionary);
 
   const [currentPokemonId, setCurrentPokemonId] = useState<Pokemon>(Pokemon.Rowlet);
-  const currentPokemon = useMemo(() => getPokemon(currentPokemonId), [currentPokemonId]);
+  const currentPokemon = useMemo(() => getPokemon(currentPokemonId), [currentPokemonId, getPokemon]);
 
   const [currentSegment, setCurrentSegment] = useState<Segment>(Segment.Village1);
   const segments = useMemo(() =>
@@ -61,7 +61,7 @@ function TaskSimulatorContent() {
   const [targetPoints, setTargetPoints] = useState(8500);
   const updateProgress = useCallback((taskNo: number, progress: number) => {
     doTask({ pokemon: currentPokemonId, segment: currentSegment, taskNo, progress });
-  }, [currentPokemonId, currentPokemon]);
+  }, [currentPokemonId, currentSegment]);
 
   return (
     <div data-theme="pokemon-la" className="flex flex-col h-screen overflow-hidden bg-surface-container">
