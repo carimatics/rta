@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Material 3 Color Scheme */
+  /* Primary */
+  --color-primary: #000;
+  --color-on-primary: #fff;
+  --color-primary-container: #fff;
+  --color-on-primary-container: #000;
+  --color-primary-fixed: #000;
+  --color-primary-fixed-dim: #000;
+  --color-on-primary-fixed: #fff;
+  --color-on-primary-fixed-variant: #fff;
+
+  /* Secondary */
+  --color-secondary: #000;
+  --color-on-secondary: #fff;
+  --color-secondary-container: #fff;
+  --color-on-secondary-container: #000;
+  --color-secondary-fixed: #000;
+  --color-secondary-fixed-dim: #000;
+  --color-on-secondary-fixed: #fff;
+  --color-on-secondary-fixed-variant: #fff;
+
+  /* Tertiary */
+  --color-tertiary: #000;
+  --color-on-tertiary: #fff;
+  --color-tertiary-container: #fff;
+  --color-on-tertiary-container: #000;
+  --color-tertiary-fixed: #000;
+  --color-tertiary-fixed-dim: #000;
+  --color-on-tertiary-fixed: #fff;
+  --color-on-tertiary-fixed-variant: #fff;
+
+  /* Error */
+  --color-error: #f00;
+  --color-on-error: #fff;
+  --color-error-container: #f00;
+  --color-on-error-container: #fff;
+
+  /* Surface */
+  --color-surface: #fff;
+  --color-surface-dim: #fff;
+  --color-surface-bright: #fff;
+  --color-surface-container: #000;
+  --color-surface-container-low: #000;
+  --color-surface-container-lowest: #000;
+  --color-surface-container-high: #000;
+  --color-surface-container-highest: #000;
+  --color-on-surface: #000;
+  --color-on-surface-variant: #000;
+
+  /* Outline */
+  --color-outline: #fff;
+  --color-outline-variant: #fff;
+
+  /* Inverse */
+  --color-inverse-surface: #000;
+  --color-inverse-on-surface: #fff;
+  --color-inverse-primary: #fff;
+
+  /* Other */
+  --color-scrim: #000;
+  --color-shadow: #000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer theme {
+  [data-theme='pokemon-la'] {
+    /* Material 3 Color Scheme */
+    /* Primary */
+    --color-primary: #b19d8d;
+    --color-on-primary: #efefe1;
+    --color-primary-container: #b19d8d;
+    --color-on-primary-container: #473e39;
+    --color-primary-fixed: oklch(from var(--color-primary) calc(l * 70%) c h);
+    --color-primary-fixed-dim: #000;
+    --color-on-primary-fixed: #fff;
+    --color-on-primary-fixed-variant: #fff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Secondary */
+    --color-secondary: #2e44b5;
+    --color-on-secondary: #efe3e3;
+    --color-secondary-container: #fbf8ea;
+    --color-on-secondary-container: #283a4f;
+    --color-secondary-fixed: #000000;
+    --color-secondary-fixed-dim: #000;
+    --color-on-secondary-fixed: #fff;
+    --color-on-secondary-fixed-variant: #fff;
+
+    /* Tertiary */
+    --color-tertiary: #d8429f;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #000;
+    --color-on-tertiary-container: #000;
+    --color-tertiary-fixed: #000;
+    --color-tertiary-fixed-dim: #000;
+    --color-on-tertiary-fixed: #fff;
+    --color-on-tertiary-fixed-variant: #fff;
+
+    /* Error */
+    --color-error: #b93a38;
+    --color-on-error: #ffffff;
+    --color-error-container: #ff00cc;
+    --color-on-error-container: #ffffff;
+
+    /* Surface */
+    --color-surface: #ffffff;
+    --color-surface-dim: oklch(from var(--color-surface) calc(l * 80%) c h);
+    --color-surface-bright: oklch(from var(--color-surface) calc(l * 120%) c h);
+    --color-surface-container: #f7f1ed;
+    --color-surface-container-low: oklch(from var(--color-surface-container) calc(l * 120%) c h);
+    --color-surface-container-lowest: oklch(from var(--color-surface-container-low) calc(l * 120%) c h);
+    --color-surface-container-high: oklch(from var(--color-surface-container) calc(l * 80%) c h);
+    --color-surface-container-highest: oklch(from var(--color-surface-container-high) calc(l * 80%) c h);
+    --color-on-surface: #283a4f;
+    --color-on-surface-variant: #345b89;
+
+    /* Outline */
+    --color-outline: #332d2d;
+    --color-outline-variant: #696d78;
+
+    /* Inverse */
+    --color-inverse-surface: #000;
+    --color-inverse-on-surface: #fff;
+    --color-inverse-primary: #fff;
+
+    /* Other */
+    --color-scrim: #000;
+    --color-shadow: #000;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
