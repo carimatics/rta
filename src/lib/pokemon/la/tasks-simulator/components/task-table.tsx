@@ -12,40 +12,40 @@ export function TaskTable({ pokemon, updateProgress, ...props }: TaskTableProps)
   const isLast = useCallback((taskNo: number) => taskNo < pokemon.tasks.length - 1, [pokemon.tasks]);
 
   return (
-    <table {...props} className="w-full">
+    <table {...props} className="min-w-full table-fixed" style={{ width: '800px' }}>
       <thead>
         <tr>
-          <th className="w-20">Reward</th>
-          <th>Task</th>
-          <th className="w-36">Progress</th>
-          <th className="w-60">Requirements</th>
-          <th className="w-20">Points</th>
+          <th className="w-20 px-2 py-1 text-left">Reward</th>
+          <th className="w-64 px-2 py-1 text-left">Task</th>
+          <th className="w-36 px-2 py-1 text-left">Progress</th>
+          <th className="w-60 px-2 py-1 text-left">Requirements</th>
+          <th className="w-20 px-2 py-1 text-left">Points</th>
         </tr>
       </thead>
       <tbody>
         {pokemon.tasks.map((task, taskNo) => (
           <tr key={taskNo}>
-            <td className="pb-2 text-center font-bold">{task.reward}</td>
-            <td className="pb-2 pl-4 font-bold">{task.name}</td>
-            <td className="flex justify-center p-2 pt-0">
+            <td className="px-2 py-1 text-center font-bold">{task.reward}</td>
+            <td className="px-2 py-1 font-bold">{task.name}</td>
+            <td className="px-2 py-1">
               {isLast(taskNo) ? (
                 <ProgressInput
                   task={task}
                   updateProgress={(progress) => updateProgress(taskNo, progress)} />
               ) : (
-                <div className="flex w-full justify-center gap-2 font-bold">
+                <div className="flex justify-center font-bold">
                   {pokemon.completed ? '完成' : '未完成'}
                 </div>
               )}
             </td>
-            <td className="pb-2">
+            <td className="px-2 py-1">
               {isLast(taskNo) && (
                 <RequirementsIndicator
                   task={task}
                   updateProgress={(progress) => updateProgress(taskNo, progress)} />
               )}
             </td>
-            <td className="w-16 pb-2 text-center font-bold">{task.points}</td>
+            <td className="px-2 py-1 text-center font-bold">{task.points}</td>
           </tr>
         ))}
       </tbody>
