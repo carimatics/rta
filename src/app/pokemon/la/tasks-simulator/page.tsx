@@ -65,8 +65,30 @@ function TaskSimulatorContent() {
 
   return (
     <div data-theme="pokemon-la" className="min-h-screen bg-surface-container">
+      {/* Header */}
+      <header className="bg-surface border-b border-outline/20 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <h1 className="text-2xl font-bold text-on-surface">Tasks Simulator</h1>
+              <span className="text-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
+                Pokemon Legends: Arceus
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-sm text-on-surface-variant">
+                Total Points: <span className="font-bold text-tertiary">{pokedexState.points}</span>
+              </div>
+              <div className="text-sm text-on-surface-variant">
+                Target: <span className="font-bold text-primary">{targetPoints}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-12 gap-6 h-[calc(100vh-3rem)]">
+        <div className="grid grid-cols-12 gap-6 h-[calc(100vh-8rem)]">
           {/* Pokemon List Sidebar */}
           <aside className="col-span-3 bg-surface rounded-2xl shadow-lg overflow-hidden">
             <div className="h-full">
