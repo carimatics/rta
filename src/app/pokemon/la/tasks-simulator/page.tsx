@@ -100,9 +100,10 @@ function TaskSimulatorContent() {
   );
 
   const renderOverviewTab = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Target Points Setting */}
-      <div className="lg:col-span-3">
+    <div className="space-y-6">
+      {/* Target Points and Progress Overview - Top Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Target Points Setting */}
         <PrimaryContainer>
           <div className="p-4">
             <div className="flex items-center gap-4">
@@ -115,62 +116,108 @@ function TaskSimulatorContent() {
             </div>
           </div>
         </PrimaryContainer>
-      </div>
 
-      {/* Progress Card */}
-      <PrimaryContainer className="lg:col-span-1">
-        <div className="p-6">
-          <h3 className="text-lg font-bold text-on-surface mb-4">Progress Overview</h3>
-          <div className="flex flex-col items-center gap-4">
-            <div className="relative w-32 h-32">
-              <svg className="transform -rotate-90 w-32 h-32">
-                <circle
-                  cx="64"
-                  cy="64"
-                  r="56"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="transparent"
-                  className="text-surface-container-high"
-                />
-                <circle
-                  cx="64"
-                  cy="64"
-                  r="56"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="transparent"
-                  strokeDasharray={`${2 * Math.PI * 56}`}
-                  strokeDashoffset={`${2 * Math.PI * 56 * (1 - progressPercentage / 100)}`}
-                  className={progressPercentage >= 100 ? "text-tertiary" : "text-primary"}
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-lg font-bold text-on-surface">
-                  {Math.round(progressPercentage)}%
-                </span>
+        {/* Progress Card */}
+        <PrimaryContainer className="lg:col-span-2">
+          <div className="p-6">
+            <h3 className="text-lg font-bold text-on-surface mb-4">Progress Overview</h3>
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-32 h-32">
+                <svg className="transform -rotate-90 w-32 h-32">
+                  <circle
+                    cx="64"
+                    cy="64"
+                    r="56"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    fill="transparent"
+                    className="text-surface-container-high"
+                  />
+                  <circle
+                    cx="64"
+                    cy="64"
+                    r="56"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    fill="transparent"
+                    strokeDasharray={`${2 * Math.PI * 56}`}
+                    strokeDashoffset={`${2 * Math.PI * 56 * (1 - progressPercentage / 100)}`}
+                    className={progressPercentage >= 100 ? "text-tertiary" : "text-primary"}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-lg font-bold text-on-surface">
+                    {Math.round(progressPercentage)}%
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-on-surface">
-                {pokedexState.points.toLocaleString()} pts
-              </div>
-              <div className="text-sm text-on-surface-variant">
-                of {targetPoints.toLocaleString()} target
-              </div>
-              <div className="text-sm text-on-surface-variant mt-1">
-                {targetPoints - pokedexState.points > 0 
-                  ? `${(targetPoints - pokedexState.points).toLocaleString()} remaining`
-                  : 'Target achieved! 🎉'
-                }
+              <div className="text-center">
+                <div className="text-2xl font-bold text-on-surface">
+                  {pokedexState.points.toLocaleString()} pts
+                </div>
+                <div className="text-sm text-on-surface-variant">
+                  of {targetPoints.toLocaleString()} target
+                </div>
+                <div className="text-sm text-on-surface-variant mt-1">
+                  {targetPoints - pokedexState.points > 0 
+                    ? `${(targetPoints - pokedexState.points).toLocaleString()} remaining`
+                    : 'Target achieved! 🎉'
+                  }
+                </div>
               </div>
             </div>
           </div>
+        </PrimaryContainer>
+      </div>
+
+      {/* Pokemon with Points - Middle Row */}
+      <PrimaryContainer>
+        <div className="p-4">
+          <h3 className="text-lg font-bold text-on-surface mb-4">Pokemon with Points ({pokemonWithPoints.length})</h3>
+          {pokemonWithPoints.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+              {pokemonWithPoints.map((pokemon) => (
+                <div 
+                  key={pokemon.id} 
+                  className="bg-surface-container-high rounded-lg p-3 flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors cursor-pointer"
+                  onClick={() => {
+                    setCurrentPokemonId(pokemon.id);
+                    setActiveTab('tasks');
+                  }}
+                >
+                  <div className="w-12 h-12 rounded-full overflow-hidden border border-outline/20">
+                    <PokemonImage
+                      pokemon={pokemon}
+                      size={100}
+                      alt={pokemon.name}
+                      className="object-contain object-center"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-xs text-on-surface-variant">No. {pokemon.id}</div>
+                    <div className="text-sm font-semibold text-on-surface truncate max-w-20" title={pokemon.name}>
+                      {pokemon.name}
+                    </div>
+                    <div className="text-sm font-bold text-primary">
+                      {pokemon.points} pts
+                    </div>
+                    {pokemon.completed && (
+                      <div className="text-xs text-tertiary">✓ Complete</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8 text-on-surface-variant">
+              No Pokemon with points yet. Start completing tasks to see your progress!
+            </div>
+          )}
         </div>
       </PrimaryContainer>
 
-      {/* Progress Timeline */}
-      <PrimaryContainer className="lg:col-span-2">
+      {/* Progress Timeline - Bottom Row */}
+      <PrimaryContainer>
         <div className="p-4 h-full flex flex-col">
           <h3 className="text-lg font-bold text-on-surface mb-4">Progress Timeline</h3>
           <div className="flex-1 overflow-y-auto">
@@ -232,54 +279,6 @@ function TaskSimulatorContent() {
           </div>
         </div>
       </PrimaryContainer>
-
-      {/* Pokemon with Points */}
-      <div className="lg:col-span-3">
-        <PrimaryContainer>
-          <div className="p-4">
-            <h3 className="text-lg font-bold text-on-surface mb-4">Pokemon with Points ({pokemonWithPoints.length})</h3>
-            {pokemonWithPoints.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-                {pokemonWithPoints.map((pokemon) => (
-                  <div 
-                    key={pokemon.id} 
-                    className="bg-surface-container-high rounded-lg p-3 flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors cursor-pointer"
-                    onClick={() => {
-                      setCurrentPokemonId(pokemon.id);
-                      setActiveTab('tasks');
-                    }}
-                  >
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-outline/20">
-                      <PokemonImage
-                        pokemon={pokemon}
-                        size={100}
-                        alt={pokemon.name}
-                        className="object-contain object-center"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xs text-on-surface-variant">No. {pokemon.id}</div>
-                      <div className="text-sm font-semibold text-on-surface truncate max-w-20" title={pokemon.name}>
-                        {pokemon.name}
-                      </div>
-                      <div className="text-sm font-bold text-primary">
-                        {pokemon.points} pts
-                      </div>
-                      {pokemon.completed && (
-                        <div className="text-xs text-tertiary">✓ Complete</div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-on-surface-variant">
-                No Pokemon with points yet. Start completing tasks to see your progress!
-              </div>
-            )}
-          </div>
-        </PrimaryContainer>
-      </div>
     </div>
   );
 
