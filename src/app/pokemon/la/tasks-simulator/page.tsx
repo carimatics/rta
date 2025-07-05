@@ -101,28 +101,23 @@ function TaskSimulatorContent() {
 
   const renderOverviewTab = () => (
     <div className="space-y-6">
-      {/* Target Points and Progress Overview - Top Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Target Points Setting */}
-        <PrimaryContainer>
-          <div className="p-4">
+      {/* Target Points and Progress Overview - Combined */}
+      <PrimaryContainer>
+        <div className="p-6">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
+            {/* Target Points Setting */}
             <div className="flex items-center gap-4">
-              <h4 className="font-semibold text-on-surface">Target Points</h4>
-              <div className="flex-1 max-w-32">
+              <h4 className="font-semibold text-on-surface whitespace-nowrap">Target Points</h4>
+              <div className="w-40">
                 <TargetPointsInput
                   targetPoints={targetPoints}
                   updateTargetPoints={(points) => setTargetPoints(points)} />
               </div>
             </div>
-          </div>
-        </PrimaryContainer>
 
-        {/* Progress Card */}
-        <PrimaryContainer className="lg:col-span-2">
-          <div className="p-6">
-            <h3 className="text-lg font-bold text-on-surface mb-4">Progress Overview</h3>
-            <div className="flex flex-col items-center gap-4">
-              <div className="relative w-32 h-32">
+            {/* Progress Overview */}
+            <div className="flex-1 flex flex-col lg:flex-row items-center gap-6">
+              <div className="relative w-32 h-32 flex-shrink-0">
                 <svg className="transform -rotate-90 w-32 h-32">
                   <circle
                     cx="64"
@@ -151,7 +146,7 @@ function TaskSimulatorContent() {
                   </span>
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center lg:text-left">
                 <div className="text-2xl font-bold text-on-surface">
                   {pokedexState.points.toLocaleString()} pts
                 </div>
@@ -167,8 +162,8 @@ function TaskSimulatorContent() {
               </div>
             </div>
           </div>
-        </PrimaryContainer>
-      </div>
+        </div>
+      </PrimaryContainer>
 
       {/* Pokemon with Points - Middle Row */}
       <PrimaryContainer>
