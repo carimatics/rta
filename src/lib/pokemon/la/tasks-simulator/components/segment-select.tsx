@@ -17,7 +17,6 @@ export function SegmentSelect({
 }: SegmentSelectProps) {
   return (
     <div className={twMerge('flex items-center gap-2', className)} {...props}>
-      <div className="font-bold">現在区間</div>
       <select
         className="border-outline rounded-md border-1 px-1 py-2 shadow-md"
         value={currentSegment}

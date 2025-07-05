@@ -275,6 +275,16 @@ function TaskSimulatorContent() {
 
   const renderTasksTab = () => (
     <div className="flex flex-col gap-6 h-full">
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-on-surface-variant">Segment:</span>
+        <div className="min-w-0">
+          <SegmentSelect
+            segments={segments}
+            currentSegment={currentSegment}
+            updateSegment={(segment) => setCurrentSegment(segment)} />
+        </div>
+      </div>
+
       {/* Pokemon Info Header */}
       <PrimaryContainer>
         <div className="p-4">
@@ -301,15 +311,6 @@ function TaskSimulatorContent() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 ml-auto">
-                <span className="text-sm text-on-surface-variant">Segment:</span>
-                <div className="min-w-0">
-                  <SegmentSelect
-                    segments={segments}
-                    currentSegment={currentSegment}
-                    updateSegment={(segment) => setCurrentSegment(segment)} />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -318,7 +319,7 @@ function TaskSimulatorContent() {
       {/* Task Management */}
       <PrimaryContainer className="flex-1">
         <div className="p-4 h-full flex flex-col">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-4 pr-8">
             <h3 className="text-lg font-bold text-on-surface">Task Management</h3>
             <Button
               color="error"
