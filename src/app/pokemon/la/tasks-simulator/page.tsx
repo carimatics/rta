@@ -8,11 +8,13 @@ import { Button } from '@/lib/components';
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
 import { Language, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
 import { pokedex as pokedexFixture } from '@/lib/pokemon/la/fixtures/pokedex';
+import { PointsTrendChart } from '@/lib/pokemon/la/tasks-simulator/components/points-trend-chart';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-with-filter';
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
 import { SegmentPointsDisplay } from '@/lib/pokemon/la/tasks-simulator/components/segment-points-display';
 import { SegmentSelect } from '@/lib/pokemon/la/tasks-simulator/components/segment-select';
+import { StatisticsOverview } from '@/lib/pokemon/la/tasks-simulator/components/statistics-overview';
 import { TargetPointsInput } from '@/lib/pokemon/la/tasks-simulator/components/target-points-input';
 import { TaskTable } from '@/lib/pokemon/la/tasks-simulator/components/task-table';
 import { useTasksSimulator } from '@/lib/pokemon/la/tasks-simulator/hooks';
@@ -165,7 +167,24 @@ function TaskSimulatorContent() {
         </div>
       </PrimaryContainer>
 
-      {/* Pokemon with Points - Middle Row */}
+      {/* Statistics and Trends - Middle Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Statistics Overview */}
+        <PrimaryContainer>
+          <div className="p-4">
+            <StatisticsOverview pokedexState={pokedexState} />
+          </div>
+        </PrimaryContainer>
+
+        {/* Points Trend Chart */}
+        <PrimaryContainer>
+          <div className="p-4">
+            <PointsTrendChart pokedexState={pokedexState} language={language} />
+          </div>
+        </PrimaryContainer>
+      </div>
+
+      {/* Pokemon with Points - Bottom Row */}
       <PrimaryContainer>
         <div className="p-4">
           <h3 className="text-lg font-bold text-on-surface mb-4">Pokemon with Points ({pokemonWithPoints.length})</h3>
