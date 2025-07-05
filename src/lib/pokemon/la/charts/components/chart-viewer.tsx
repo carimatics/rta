@@ -6,6 +6,7 @@ import { ChartHeader } from './chart-header';
 import { ExportOnlyTab } from './export-only-tab';
 import { ReadonlyOverviewTab } from './readonly-overview-tab';
 import { ReadonlyTasksTab } from './readonly-tasks-tab';
+import { TaskTimelineTab } from './task-timeline-tab';
 
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
 import { Language, Pokemon } from '@/lib/pokemon/la/fixtures';
@@ -31,6 +32,7 @@ export function ChartViewer({
   const tabs = [
     { id: 'overview' as ChartTabType, name: 'Overview', icon: '📊' },
     { id: 'tasks' as ChartTabType, name: 'Tasks', icon: '✅' },
+    { id: 'task-timeline' as ChartTabType, name: 'Task Timeline', icon: '📅' },
     { id: 'export' as ChartTabType, name: 'Export', icon: '💾' },
   ];
 
@@ -90,6 +92,12 @@ export function ChartViewer({
               pokedexState={chartData.pokedexState}
               dictionary={dictionary}
               initialPokemonId={selectedPokemonId || undefined}
+            />
+          )}
+          {activeTab === 'task-timeline' && (
+            <TaskTimelineTab
+              pokedexState={chartData.pokedexState}
+              dictionary={dictionary}
             />
           )}
           {activeTab === 'export' && (

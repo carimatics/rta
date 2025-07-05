@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": "2025-07-05T14:01:30.554Z",
+  "timestamp": "2025-07-05T14:48:28.988Z",
   "targetPoints": 8500,
   "pokedexState": {
     "pages": [
@@ -212,9 +212,9 @@
         "points": 200,
         "pointsBySegments": {
           "4": 40,
-          "5": 10,
+          "5": 30,
           "8": 20,
-          "10": 130
+          "10": 110
         },
         "tasks": [
           {
@@ -248,8 +248,8 @@
             "name": "「ひのこ」をみた数",
             "points": 40,
             "pointsBySegments": {
-              "8": 20,
-              "10": 20
+              "5": 20,
+              "8": 20
             },
             "reward": 20,
             "achievedCount": 2,
@@ -262,8 +262,8 @@
             ],
             "progress": 2,
             "progresses": {
-              "8": 1,
-              "10": 2
+              "5": 1,
+              "8": 2
             },
             "min": 0,
             "max": 15,
@@ -11263,10 +11263,10 @@
       "1": 40,
       "2": 60,
       "4": 470,
-      "5": 10,
+      "5": 30,
       "6": 280,
       "8": 870,
-      "10": 130,
+      "10": 110,
       "11": 170,
       "12": 1320,
       "14": 480,
@@ -11275,10 +11275,5 @@
       "18": 720,
       "20": 2140
     }
-  },
-  "metadata": {
-    "title": "Carimatics's Chart v20250505",
-    "description": "Pokemon Legends Arceus",
-    "author": "carimatics"
   }
 }
