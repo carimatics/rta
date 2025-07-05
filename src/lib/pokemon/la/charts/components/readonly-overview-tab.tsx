@@ -5,18 +5,20 @@ import { PointsTrendChart } from '@/lib/pokemon/la/tasks-simulator/components/po
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
 import { StatisticsOverview } from '@/lib/pokemon/la/tasks-simulator/components/statistics-overview';
-import { PokedexState } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
+import { PokedexState, PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
 
 interface ReadonlyOverviewTabProps {
   targetPoints: number;
   pokedexState: PokedexState;
   language: Language;
+  onPokemonClick?: (pokemon: PokedexPokemonState) => void;
 }
 
 export const ReadonlyOverviewTab: React.FC<ReadonlyOverviewTabProps> = ({
   targetPoints,
   pokedexState,
   language,
+  onPokemonClick,
 }) => {
   const progressPercentage = Math.min((pokedexState.points / targetPoints) * 100, 100);
   const pokemonWithPoints = pokedexState.pages.filter(pokemon => pokemon.points > 0)
@@ -111,9 +113,10 @@ export const ReadonlyOverviewTab: React.FC<ReadonlyOverviewTabProps> = ({
           {pokemonWithPoints.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
               {pokemonWithPoints.map((pokemon) => (
-                <div 
-                  key={pokemon.id} 
-                  className="bg-surface-container-high rounded-lg p-3 flex flex-col items-center gap-2"
+                <button
+                  key={pokemon.id}
+                  onClick={() => onPokemonClick?.(pokemon)}
+                  className="bg-surface-container-high rounded-lg p-3 flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer border border-transparent hover:border-outline/30"
                 >
                   <div className="w-12 h-12 rounded-full overflow-hidden border border-outline/20">
                     <PokemonImage
@@ -135,7 +138,7 @@ export const ReadonlyOverviewTab: React.FC<ReadonlyOverviewTabProps> = ({
                       <div className="text-xs text-tertiary">✓ Complete</div>
                     )}
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           ) : (

@@ -6,10 +6,11 @@ import { RequirementsIndicatorButton } from '@/lib/pokemon/la/tasks-simulator/co
 
 export interface RequirementsIndicatorProps extends ComponentProps<'ul'> {
   task: PokedexPokemonTaskState;
-  updateProgress: (progress: number) => void;
+  updateProgress?: (progress: number) => void;
+  disabled?: boolean;
 }
 
-export function RequirementsIndicator({ className, task, updateProgress, ...props }: RequirementsIndicatorProps) {
+export function RequirementsIndicator({ className, task, updateProgress, disabled = false, ...props }: RequirementsIndicatorProps) {
   const achieved = useCallback(
     (requirement: number) => task.progress >= requirement,
     [task.progress]
@@ -26,6 +27,7 @@ export function RequirementsIndicator({ className, task, updateProgress, ...prop
               requirement={requirement}
               achieved={achieved(requirement)}
               updateProgress={updateProgress}
+              disabled={disabled}
             />
           ) : (
             <>
@@ -34,6 +36,7 @@ export function RequirementsIndicator({ className, task, updateProgress, ...prop
                 requirement={requirement}
                 achieved={achieved(requirement)}
                 updateProgress={updateProgress}
+                disabled={disabled}
               />
             </>
           )}

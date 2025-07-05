@@ -11,7 +11,6 @@ interface ExportOnlyTabProps {
     title?: string;
     description?: string;
     author?: string;
-    tags?: string[];
   };
 }
 
@@ -24,7 +23,6 @@ interface ExportData {
     title?: string;
     description?: string;
     author?: string;
-    tags?: string[];
   };
 }
 
@@ -179,16 +177,6 @@ export const ExportOnlyTab: React.FC<ExportOnlyTabProps> = ({
                 )}
                 {metadata.author && (
                   <div><span className="font-medium">Author:</span> {metadata.author}</div>
-                )}
-                {metadata.tags && metadata.tags.length > 0 && (
-                  <div>
-                    <span className="font-medium">Tags:</span>{' '}
-                    {metadata.tags.map((tag, index) => (
-                      <span key={index} className="bg-surface-container-high px-2 py-1 rounded text-xs mr-1">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
                 )}
               </div>
             </div>

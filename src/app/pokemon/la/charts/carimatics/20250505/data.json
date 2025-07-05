@@ -2,10 +2,9 @@
   "version": "1.0.0",
   "timestamp": "2025-05-05T12:00:00.000Z",
   "metadata": {
-    "title": "Carimatics's Progress Chart",
+    "title": "Carimatics's Chart v20250505",
     "description": "Pokemon Legends Arceus",
-    "author": "carimatics",
-    "tags": ["pokemon-la", "progress", "may-2025", "sample"]
+    "author": "carimatics"
   },
   "targetPoints": 8500,
   "pokedexState": {

@@ -8,7 +8,8 @@ import { ReadonlyOverviewTab } from './readonly-overview-tab';
 import { ReadonlyTasksTab } from './readonly-tasks-tab';
 
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
-import { Language } from '@/lib/pokemon/la/fixtures';
+import { Language, Pokemon } from '@/lib/pokemon/la/fixtures';
+import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
 
 
 export function ChartViewer({
@@ -18,8 +19,14 @@ export function ChartViewer({
 }: ChartViewerProps) {
   const [activeTab, setActiveTab] = useState<ChartTabType>('overview');
   const [language, setLanguage] = useState<Language>(initialLanguage);
+  const [selectedPokemonId, setSelectedPokemonId] = useState<Pokemon | null>(null);
   
   const dictionary = useMemo(() => getDictionary(language), [language]);
+
+  const handlePokemonClick = (pokemon: PokedexPokemonState) => {
+    setSelectedPokemonId(pokemon.id);
+    setActiveTab('tasks');
+  };
 
   const tabs = [
     { id: 'overview' as ChartTabType, name: 'Overview', icon: '📊' },
@@ -75,12 +82,14 @@ export function ChartViewer({
               targetPoints={chartData.targetPoints}
               pokedexState={chartData.pokedexState}
               language={language}
+              onPokemonClick={handlePokemonClick}
             />
           )}
           {activeTab === 'tasks' && (
             <ReadonlyTasksTab
               pokedexState={chartData.pokedexState}
               dictionary={dictionary}
+              initialPokemonId={selectedPokemonId || undefined}
             />
           )}
           {activeTab === 'export' && (

@@ -1,71 +1,29 @@
 import React, { useMemo, useState } from 'react';
 
+import { TaskDetails } from './task-details';
+
 import { Dictionary } from '@/lib/pokemon/la/dictionaries';
 import { Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-with-filter';
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
 import { SegmentPointsDisplay } from '@/lib/pokemon/la/tasks-simulator/components/segment-points-display';
-import { PokedexPokemonState, PokedexState } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
+import { PokedexState } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
 import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
 
 interface ReadonlyTasksTabProps {
   pokedexState: PokedexState;
   dictionary: Dictionary;
+  initialPokemonId?: Pokemon;
 }
 
-interface ReadonlyTaskTableProps {
-  pokemon: PokedexPokemonState;
-}
-
-const ReadonlyTaskTable: React.FC<ReadonlyTaskTableProps> = ({ pokemon }) => {
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-outline/20">
-            <th className="text-left py-2 px-3 text-sm font-semibold text-on-surface">Task</th>
-            <th className="text-center py-2 px-3 text-sm font-semibold text-on-surface">Progress</th>
-            <th className="text-center py-2 px-3 text-sm font-semibold text-on-surface">Points</th>
-            <th className="text-center py-2 px-3 text-sm font-semibold text-on-surface">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pokemon.tasks.map((task, index: number) => (
-            <tr key={index} className="border-b border-outline/10 hover:bg-surface-container-highest/50">
-              <td className="py-2 px-3 text-sm text-on-surface">{task.name}</td>
-              <td className="text-center py-2 px-3 text-sm text-on-surface">
-                <span className="bg-surface-container-high px-2 py-1 rounded text-xs">
-                  {task.progress}/{task.max}
-                </span>
-              </td>
-              <td className="text-center py-2 px-3 text-sm font-semibold text-primary">
-                {task.points}
-              </td>
-              <td className="text-center py-2 px-3">
-                {task.progress >= task.max ? (
-                  <span className="text-xs bg-tertiary/10 text-tertiary px-2 py-1 rounded-full">
-                    ✓ Complete
-                  </span>
-                ) : (
-                  <span className="text-xs bg-surface-container-high text-on-surface-variant px-2 py-1 rounded-full">
-                    In Progress
-                  </span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
 
 export const ReadonlyTasksTab: React.FC<ReadonlyTasksTabProps> = ({
   pokedexState,
   dictionary,
+  initialPokemonId,
 }) => {
-  const [currentPokemonId, setCurrentPokemonId] = useState<Pokemon>(Pokemon.Rowlet);
+  const [currentPokemonId, setCurrentPokemonId] = useState<Pokemon>(initialPokemonId || Pokemon.Rowlet);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const currentPokemon = useMemo(() => 
@@ -196,7 +154,7 @@ export const ReadonlyTasksTab: React.FC<ReadonlyTasksTabProps> = ({
                 </div>
               </div>
               <div className="flex-1 overflow-auto">
-                <ReadonlyTaskTable pokemon={currentPokemon} />
+                <TaskDetails pokemon={currentPokemon} />
               </div>
             </div>
           </PrimaryContainer>
