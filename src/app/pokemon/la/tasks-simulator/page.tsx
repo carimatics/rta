@@ -91,6 +91,12 @@ function TaskSimulatorContent() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
+  const pokemonWithPoints = useMemo(() => 
+    pokedexState.pages.filter(pokemon => pokemon.points > 0)
+      .sort((a, b) => a.id - b.id),
+    [pokedexState.pages]
+  );
+
   const renderOverviewTab = () => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Target Points Setting */}
@@ -220,6 +226,54 @@ function TaskSimulatorContent() {
           </div>
         </div>
       </PrimaryContainer>
+
+      {/* Pokemon with Points */}
+      <div className="lg:col-span-3">
+        <PrimaryContainer>
+          <div className="p-4">
+            <h3 className="text-lg font-bold text-on-surface mb-4">Pokemon with Points ({pokemonWithPoints.length})</h3>
+            {pokemonWithPoints.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+                {pokemonWithPoints.map((pokemon) => (
+                  <div 
+                    key={pokemon.id} 
+                    className="bg-surface-container-high rounded-lg p-3 flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors cursor-pointer"
+                    onClick={() => {
+                      setCurrentPokemonId(pokemon.id);
+                      setActiveTab('tasks');
+                    }}
+                  >
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-outline/20">
+                      <PokemonImage
+                        pokemon={pokemon}
+                        size={100}
+                        alt={pokemon.name}
+                        className="object-contain object-center"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xs text-on-surface-variant">No. {pokemon.id}</div>
+                      <div className="text-sm font-semibold text-on-surface truncate max-w-20" title={pokemon.name}>
+                        {pokemon.name}
+                      </div>
+                      <div className="text-sm font-bold text-primary">
+                        {pokemon.points} pts
+                      </div>
+                      {pokemon.completed && (
+                        <div className="text-xs text-tertiary">✓ Complete</div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-on-surface-variant">
+                No Pokemon with points yet. Start completing tasks to see your progress!
+              </div>
+            )}
+          </div>
+        </PrimaryContainer>
+      </div>
     </div>
   );
 
