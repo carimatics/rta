@@ -15,11 +15,11 @@ export function TaskTable({ pokemon, updateProgress, ...props }: TaskTableProps)
     <table {...props} className="min-w-full table-fixed" style={{ width: '800px' }}>
       <thead>
         <tr>
-          <th className="w-20 px-2 py-1 text-left">Reward</th>
-          <th className="w-64 px-2 py-1 text-left">Task</th>
-          <th className="w-36 px-2 py-1 text-left">Progress</th>
-          <th className="w-60 px-2 py-1 text-left">Requirements</th>
-          <th className="w-20 px-2 py-1 text-left">Points</th>
+          <th className="w-20 px-2 py-1 text-center">Reward</th>
+          <th className="w-64 px-2 py-1 text-center">Task</th>
+          <th className="w-36 px-2 py-1 text-center">Progress</th>
+          <th className="w-60 px-2 py-1 text-center">Requirements</th>
+          <th className="w-20 px-2 py-1 text-center">Points</th>
         </tr>
       </thead>
       <tbody>
