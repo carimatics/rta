@@ -33,6 +33,7 @@ export const ExportOnlyTab: React.FC<ExportOnlyTabProps> = ({
 }) => {
   const [exportText, setExportText] = useState('');
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const filteredPokedexState = pokedexState.pages.filter(p => p.points > 0);
 
   const handleExport = useCallback(() => {
     try {
@@ -40,7 +41,10 @@ export const ExportOnlyTab: React.FC<ExportOnlyTabProps> = ({
         version: '1.0.0',
         timestamp: new Date().toISOString(),
         targetPoints,
-        pokedexState,
+        pokedexState: {
+          ...pokedexState,
+          pages: filteredPokedexState, // Only include pages with points
+        },
         metadata,
       };
 
@@ -50,7 +54,7 @@ export const ExportOnlyTab: React.FC<ExportOnlyTabProps> = ({
     } catch (error) {
       setMessage({ type: 'error', text: `Export failed: ${error instanceof Error ? error.message : 'Unknown error'}` });
     }
-  }, [targetPoints, pokedexState, metadata]);
+  }, [targetPoints, pokedexState, metadata, filteredPokedexState]);
 
   const handleDownload = useCallback(() => {
     if (!exportText) {

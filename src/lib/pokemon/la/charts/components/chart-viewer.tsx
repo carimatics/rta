@@ -19,7 +19,7 @@ export function ChartViewer({
 }: ChartViewerProps) {
   const [activeTab, setActiveTab] = useState<ChartTabType>('overview');
   const [language, setLanguage] = useState<Language>(initialLanguage);
-  const [selectedPokemonId, setSelectedPokemonId] = useState<Pokemon | null>(null);
+  const [selectedPokemonId, setSelectedPokemonId] = useState<Pokemon | null>(chartData.pokedexState.pages[0]?.id ?? null);
   
   const dictionary = useMemo(() => getDictionary(language), [language]);
 
