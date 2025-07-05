@@ -56,9 +56,11 @@ The application includes a comprehensive Pokémon Legends: Arceus task simulator
 - Responsive UI components with Storybook documentation
 
 ### CSS Variables
-The project uses CSS custom properties defined in `src/app/globals.css`:
-- `--background` / `--foreground` - Theme colors with dark mode support
-- `--font-sans` / `--font-mono` - Font family references to Geist fonts
+The project uses Material 3 Design color scheme CSS custom properties defined in `src/app/globals.css`:
+- Material 3 color tokens including `--color-primary`, `--color-secondary`, `--color-tertiary`
+- Surface colors like `--color-surface`, `--color-surface-container` and variants
+- Semantic colors such as `--color-error`, `--color-outline`
+- Special Pokémon LA theme variant available via `[data-theme='pokemon-la']`
 
 ### Font Setup
 Geist fonts are configured in `src/app/layout.tsx` with CSS variables:
