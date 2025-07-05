@@ -242,6 +242,10 @@ export function useTasksSimulator(
     setPokedexStateAtom(createPokedexStateAtom(_fixture, _dictionary));
   }, [setPokedexStateAtom, _fixture, _dictionary]);
 
+  const importPokedexState = useCallback((newState: PokedexState) => {
+    setPokedexState(newState);
+  }, [setPokedexState]);
+
   // updaters
   useEffect(() => {
     setPokedexStateAtom(createPokedexStateAtom(_fixture, _dictionary));
@@ -265,5 +269,6 @@ export function useTasksSimulator(
     resetTask,
     resetPokemon,
     resetAll,
+    importPokedexState,
   };
 }

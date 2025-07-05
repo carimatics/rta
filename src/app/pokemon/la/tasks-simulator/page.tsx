@@ -8,6 +8,7 @@ import { Button } from '@/lib/components';
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
 import { Language, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
 import { pokedex as pokedexFixture } from '@/lib/pokemon/la/fixtures/pokedex';
+import { ImportExportTab } from '@/lib/pokemon/la/tasks-simulator/components/import-export-tab';
 import { PointsTrendChart } from '@/lib/pokemon/la/tasks-simulator/components/points-trend-chart';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-with-filter';
@@ -22,7 +23,7 @@ import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
 
 const store = createStore();
 
-type TabType = 'overview' | 'tasks';
+type TabType = 'overview' | 'tasks' | 'import-export';
 
 function TaskSimulatorContent() {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
@@ -34,6 +35,7 @@ function TaskSimulatorContent() {
     doTask,
     getPokemon,
     resetPokemon,
+    importPokedexState,
   } = useTasksSimulator(pokedexFixture, dictionary);
 
   const [currentPokemonId, setCurrentPokemonId] = useState<Pokemon>(Pokemon.Rowlet);
@@ -77,6 +79,7 @@ function TaskSimulatorContent() {
   const tabs = [
     { id: 'overview' as TabType, name: 'Overview', icon: '📊' },
     { id: 'tasks' as TabType, name: 'Tasks', icon: '✅' },
+    { id: 'import-export' as TabType, name: 'Import/Export', icon: '💾' },
   ];
 
   // Handle keyboard shortcut for sidebar
@@ -515,6 +518,14 @@ function TaskSimulatorContent() {
         <div className="min-h-[calc(100vh-12rem)]">
           {activeTab === 'overview' && renderOverviewTab()}
           {activeTab === 'tasks' && renderTasksTab()}
+          {activeTab === 'import-export' && (
+            <ImportExportTab
+              targetPoints={targetPoints}
+              setTargetPoints={setTargetPoints}
+              pokedexState={pokedexState}
+              importPokedexState={importPokedexState}
+            />
+          )}
         </div>
       </main>
     </div>
