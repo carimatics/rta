@@ -93,6 +93,18 @@ function TaskSimulatorContent() {
 
   const renderOverviewTab = () => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Target Points Setting */}
+      <div className="lg:col-span-3">
+        <PrimaryContainer>
+          <div className="p-4">
+            <h4 className="font-semibold text-on-surface mb-3">Target Points</h4>
+            <TargetPointsInput
+              targetPoints={targetPoints}
+              updateTargetPoints={(points) => setTargetPoints(points)} />
+          </div>
+        </PrimaryContainer>
+      </div>
+
       {/* Progress Card */}
       <PrimaryContainer className="lg:col-span-1">
         <div className="p-6">
@@ -208,18 +220,6 @@ function TaskSimulatorContent() {
           </div>
         </div>
       </PrimaryContainer>
-
-      {/* Target Points Setting */}
-      <div className="lg:col-span-3">
-        <PrimaryContainer>
-          <div className="p-4">
-            <h4 className="font-semibold text-on-surface mb-3">Target Points</h4>
-            <TargetPointsInput
-              targetPoints={targetPoints}
-              updateTargetPoints={(points) => setTargetPoints(points)} />
-          </div>
-        </PrimaryContainer>
-      </div>
     </div>
   );
 
@@ -275,16 +275,6 @@ function TaskSimulatorContent() {
 
   const renderTasksTab = () => (
     <div className="flex flex-col gap-6 h-full">
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-on-surface-variant">Segment:</span>
-        <div className="min-w-0">
-          <SegmentSelect
-            segments={segments}
-            currentSegment={currentSegment}
-            updateSegment={(segment) => setCurrentSegment(segment)} />
-        </div>
-      </div>
-
       {/* Pokemon Info Header */}
       <PrimaryContainer>
         <div className="p-4">
@@ -336,6 +326,15 @@ function TaskSimulatorContent() {
                   d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
               </svg>
             </Button>
+          </div>
+          <div className="flex items-center gap-2 mb-2 px-2">
+            <span className="text-sm text-on-surface-variant">Segment:</span>
+            <div className="min-w-0">
+              <SegmentSelect
+                segments={segments}
+                currentSegment={currentSegment}
+                updateSegment={(segment) => setCurrentSegment(segment)} />
+            </div>
           </div>
           <div className="flex-1 overflow-x-auto">
             <TaskTable
