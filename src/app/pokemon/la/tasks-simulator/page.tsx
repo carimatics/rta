@@ -11,6 +11,7 @@ import { pokedex as pokedexFixture } from '@/lib/pokemon/la/fixtures/pokedex';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-with-filter';
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
+import { SegmentPointsDisplay } from '@/lib/pokemon/la/tasks-simulator/components/segment-points-display';
 import { SegmentSelect } from '@/lib/pokemon/la/tasks-simulator/components/segment-select';
 import { TargetPointsInput } from '@/lib/pokemon/la/tasks-simulator/components/target-points-input';
 import { TaskTable } from '@/lib/pokemon/la/tasks-simulator/components/task-table';
@@ -333,7 +334,7 @@ function TaskSimulatorContent() {
       {/* Pokemon Info Header */}
       <PrimaryContainer>
         <div className="p-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-start justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
@@ -356,6 +357,13 @@ function TaskSimulatorContent() {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="flex-shrink-0 ml-4">
+              <SegmentPointsDisplay
+                pokemon={currentPokemon!}
+                segments={segments}
+                className="w-64"
+              />
             </div>
           </div>
         </div>
