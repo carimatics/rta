@@ -3,18 +3,19 @@
 import { createStore, Provider } from 'jotai';
 import { useCallback, useMemo, useState } from 'react';
 import React from 'react';
-import { useTasksSimulator } from '@/lib/pokemon/la/tasks-simulator/hooks';
-import { pokedex as pokedexFixture } from '@/lib/pokemon/la/fixtures/pokedex';
+
+import { Button } from '@/lib/components';
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
 import { Language, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
-import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
+import { pokedex as pokedexFixture } from '@/lib/pokemon/la/fixtures/pokedex';
+import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-with-filter';
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
 import { SegmentSelect } from '@/lib/pokemon/la/tasks-simulator/components/segment-select';
 import { TargetPointsInput } from '@/lib/pokemon/la/tasks-simulator/components/target-points-input';
-import { Button } from '@/lib/components';
 import { TaskTable } from '@/lib/pokemon/la/tasks-simulator/components/task-table';
-import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
+import { useTasksSimulator } from '@/lib/pokemon/la/tasks-simulator/hooks';
+import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
 
 const store = createStore();
 

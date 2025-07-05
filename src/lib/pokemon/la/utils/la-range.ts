@@ -1,5 +1,6 @@
-import { clamp, closedRange, range } from '@/lib/utils/range';
 import { Pokemon, Segment } from '../fixtures';
+
+import { clamp, closedRange, range } from '@/lib/utils/range';
 
 export function clampPokemon(value: Pokemon): Pokemon {
   return clamp(value, Pokemon.Rowlet, Pokemon.Darkrai);

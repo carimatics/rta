@@ -1,16 +1,17 @@
-import { PokedexFixture, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
-import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator';
-import { Dictionary } from '@/lib/pokemon/la/dictionaries';
+import { useAtom } from 'jotai';
 import { atomWithImmer } from 'jotai-immer';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useAtom } from 'jotai';
-import { clamp } from '@/lib/utils/range';
-import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
+
+import { Dictionary } from '@/lib/pokemon/la/dictionaries';
+import { PokedexFixture, Pokemon, Segment } from '@/lib/pokemon/la/fixtures';
+import { PointsBySegments } from '@/lib/pokemon/la/tasks-simulator';
 import {
   PokedexPokemonState,
   PokedexPokemonTaskProgress,
   PokedexState
 } from '@/lib/pokemon/la/tasks-simulator/pokemon-state';
+import { closedRangeSegments } from '@/lib/pokemon/la/utils/la-range';
+import { clamp } from '@/lib/utils/range';
 
 function createPokedexStateAtom(
   fixture: PokedexFixture,

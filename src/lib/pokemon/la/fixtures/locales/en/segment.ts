@@ -1,5 +1,6 @@
-import { Place } from '@/lib/pokemon/la/fixtures';
 import { places } from './place';
+
+import { Place } from '@/lib/pokemon/la/fixtures';
 
 export const segments = [
   '',

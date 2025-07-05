@@ -1,6 +1,6 @@
-import { tv, VariantProps } from 'tailwind-variants';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { tv, VariantProps } from 'tailwind-variants';
 
 const button = tv({
   base: 'py-1 px-2 w-fit hover:brightness-125 transition-all shadow-shadow shadow-xs hover:shadow-sm text-center border-outline cursor-pointer',

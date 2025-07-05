@@ -1,10 +1,11 @@
-import { describe, it, expect, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { Provider } from 'jotai';
 import React from 'react';
-import { useTasksSimulator } from '@/lib/pokemon/la/tasks-simulator/hooks/use-tasks-sumulator';
+import { describe, it, expect, beforeEach } from 'vitest';
+
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
 import { Language, Pokemon, Segment, Task, Move, type PokedexFixture } from '@/lib/pokemon/la/fixtures';
+import { useTasksSimulator } from '@/lib/pokemon/la/tasks-simulator/hooks/use-tasks-sumulator';
 
 describe('useTasksSimulator', () => {
   let mockPokedex: PokedexFixture;

@@ -1,4 +1,5 @@
 import { Language } from '../fixtures';
+
 import { Dictionary } from './base';
 import { EnDictionary } from './en';
 import { JaDictionary } from './ja';

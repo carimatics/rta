@@ -1,6 +1,7 @@
 import { ComponentProps, useCallback } from 'react';
-import { PokedexPokemonTaskState } from '@/lib/pokemon/la/tasks-simulator';
 import { twMerge } from 'tailwind-merge';
+
+import { PokedexPokemonTaskState } from '@/lib/pokemon/la/tasks-simulator';
 import { RequirementsIndicatorButton } from '@/lib/pokemon/la/tasks-simulator/components/requirements-indicator-button';
 
 export interface RequirementsIndicatorProps extends ComponentProps<'ul'> {

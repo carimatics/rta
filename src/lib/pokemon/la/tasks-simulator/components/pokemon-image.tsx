@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react';
 
-import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { Pokemon } from '@/lib/pokemon/la/fixtures';
+import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 
 export interface PokemonImageProps extends ComponentProps<'img'> {
   pokemon: PokedexPokemonState;

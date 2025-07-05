@@ -1,5 +1,6 @@
-import { ButtonProps } from '@/lib/components';
 import { twMerge } from 'tailwind-merge';
+
+import { ButtonProps } from '@/lib/components';
 
 export interface RequirementsIndicatorButtonProps extends ButtonProps {
   requirement: number;

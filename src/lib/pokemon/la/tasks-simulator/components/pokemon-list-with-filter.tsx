@@ -1,8 +1,9 @@
 import { ComponentProps, useCallback, useMemo, useState } from 'react';
-import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
+
 import { Button, SearchInput } from '@/lib/components';
-import { hiraganaToKatakana } from '@/lib/utils/change-case';
+import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { PokemonList } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list';
+import { hiraganaToKatakana } from '@/lib/utils/change-case';
 
 export interface PokemonListStateProps extends ComponentProps<'div'> {
   pokedex: PokedexPokemonState[];

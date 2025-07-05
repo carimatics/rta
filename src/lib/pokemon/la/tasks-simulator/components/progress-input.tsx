@@ -1,7 +1,8 @@
 import { ComponentProps } from 'react';
-import { PokedexPokemonTaskState } from '@/lib/pokemon/la/tasks-simulator';
 import { twMerge } from 'tailwind-merge';
+
 import { Button } from '@/lib/components';
+import { PokedexPokemonTaskState } from '@/lib/pokemon/la/tasks-simulator';
 
 export interface ProgressInputProps extends ComponentProps<'div'> {
   task: PokedexPokemonTaskState;

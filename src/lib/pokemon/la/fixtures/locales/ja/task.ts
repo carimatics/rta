@@ -1,4 +1,5 @@
 import { TaskGenerator } from '../task-generator';
+
 import { moves } from './move';
 import { moveTypes } from './move-type';
 

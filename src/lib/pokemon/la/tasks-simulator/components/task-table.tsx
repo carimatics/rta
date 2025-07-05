@@ -1,4 +1,5 @@
 import { ComponentProps, useCallback } from 'react';
+
 import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { ProgressInput } from '@/lib/pokemon/la/tasks-simulator/components/progress-input';
 import { RequirementsIndicator } from '@/lib/pokemon/la/tasks-simulator/components/requirements-indicator';

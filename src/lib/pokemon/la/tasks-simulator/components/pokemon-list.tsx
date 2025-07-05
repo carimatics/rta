@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
-import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { twMerge } from 'tailwind-merge';
+
+import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { PokemonListCard } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-list-card';
 
 export interface PokemonListProps extends ComponentProps<'ul'> {

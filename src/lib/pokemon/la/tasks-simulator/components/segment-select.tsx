@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
-import { Segment } from '@/lib/pokemon/la/fixtures';
 import { twMerge } from 'tailwind-merge';
+
+import { Segment } from '@/lib/pokemon/la/fixtures';
 
 export interface SegmentSelectProps extends ComponentProps<'div'> {
   segments: { id: Segment; name: string }[];

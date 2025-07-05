@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
-import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { twMerge } from 'tailwind-merge';
+
+import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 
 export interface PokemonListCardProps extends Omit<ComponentProps<'div'>, 'onClick'> {

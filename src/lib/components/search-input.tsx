@@ -1,5 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
 import { ComponentProps } from 'react';
+import { tv, VariantProps } from 'tailwind-variants';
 
 const searchInput = tv({
   base: 'caret-outline-variant border border-outline placeholder-outline-variant flex-1 bg-white/10 backdrop-blur-sm p-1',

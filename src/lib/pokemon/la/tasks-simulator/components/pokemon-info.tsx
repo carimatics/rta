@@ -1,5 +1,6 @@
 import { ComponentProps, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
+
 import { PokedexPokemonState } from '@/lib/pokemon/la/tasks-simulator';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
 
