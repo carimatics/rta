@@ -12,7 +12,6 @@ import { PokemonListWithFilter } from '@/lib/pokemon/la/tasks-simulator/componen
 import { PrimaryContainer } from '@/lib/pokemon/la/tasks-simulator/components/primary-container';
 import { SegmentSelect } from '@/lib/pokemon/la/tasks-simulator/components/segment-select';
 import { TargetPointsInput } from '@/lib/pokemon/la/tasks-simulator/components/target-points-input';
-import { PokemonInfo } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-info';
 import { Button } from '@/lib/components';
 import { TaskTable } from '@/lib/pokemon/la/tasks-simulator/components/task-table';
 import { PokemonImage } from '@/lib/pokemon/la/tasks-simulator/components/pokemon-image';
@@ -275,27 +274,57 @@ function TaskSimulatorContent() {
   );
 
   const renderTasksTab = () => (
-    <PrimaryContainer className="h-full">
-      <div className="p-4 h-full flex flex-col">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-4">
-            <h3 className="text-lg font-bold text-on-surface">Task Management</h3>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-on-surface-variant">Segment:</span>
-              <div className="min-w-0">
-                <SegmentSelect
-                  segments={segments}
-                  currentSegment={currentSegment}
-                  updateSegment={(segment) => setCurrentSegment(segment)} />
+    <div className="flex flex-col gap-6 h-full">
+      {/* Pokemon Info Header */}
+      <PrimaryContainer>
+        <div className="p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
+                  <PokemonImage
+                    pokemon={currentPokemon!}
+                    size={200}
+                    alt={currentPokemon!.name}
+                    className="object-contain object-center"
+                  />
+                </div>
+                <div>
+                  <div className="text-xl font-bold text-on-surface">
+                    No. {currentPokemon!.id} - {currentPokemon!.name}
+                  </div>
+                  <div className="text-sm text-on-surface-variant">
+                    Points: <span className="font-semibold text-primary">{currentPokemon!.points}</span> • 
+                    Status: <span className={`font-semibold ${currentPokemon!.completed ? 'text-tertiary' : 'text-on-surface-variant'}`}>
+                      {currentPokemon!.completed ? 'Completed' : 'In Progress'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 ml-auto">
+                <span className="text-sm text-on-surface-variant">Segment:</span>
+                <div className="min-w-0">
+                  <SegmentSelect
+                    segments={segments}
+                    currentSegment={currentSegment}
+                    updateSegment={(segment) => setCurrentSegment(segment)} />
+                </div>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <PokemonInfo pokemon={currentPokemon!} />
+        </div>
+      </PrimaryContainer>
+
+      {/* Task Management */}
+      <PrimaryContainer className="flex-1">
+        <div className="p-4 h-full flex flex-col">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-bold text-on-surface">Task Management</h3>
             <Button
               color="error"
-              className="size-10 flex items-center justify-center rounded-full"
-              onClick={() => resetPokemon({ pokemon: currentPokemon!.id })}>
+              className="size-10 flex items-center justify-center rounded-full hover:scale-105 transition-transform"
+              onClick={() => resetPokemon({ pokemon: currentPokemon!.id })}
+              title="Reset Pokemon Progress">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="16px"
@@ -307,14 +336,14 @@ function TaskSimulatorContent() {
               </svg>
             </Button>
           </div>
+          <div className="flex-1 overflow-x-auto">
+            <TaskTable
+              pokemon={currentPokemon!}
+              updateProgress={updateProgress} />
+          </div>
         </div>
-        <div className="flex-1 overflow-x-auto">
-          <TaskTable
-            pokemon={currentPokemon!}
-            updateProgress={updateProgress} />
-        </div>
-      </div>
-    </PrimaryContainer>
+      </PrimaryContainer>
+    </div>
   );
 
 
