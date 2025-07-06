@@ -100,6 +100,7 @@ export function ChartViewer({
             <TaskTimelineTab
               pokedexState={chartData.pokedexState}
               dictionary={dictionary}
+              onPokemonClick={handlePokemonClick}
             />
           )}
           {activeTab === 'reference-video' && (
