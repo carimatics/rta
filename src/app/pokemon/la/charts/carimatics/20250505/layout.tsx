@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Carimatics Chart (2025/05/05) | Pokémon LEGENDS アルセウス RTA',
     description: 'CarmaticsによるPokémon LEGENDS アルセウス Any%カテゴリの4時間切り目標の初心者用RTAチャート。参考記録: 3時間56分58秒。',
-    url: 'https://rta.carimatics.com/pokemon/la/charts/carimatics/20250505',
+    url: 'https://carimatics.github.io/rta/pokemon/la/charts/carimatics/20250505',
     siteName: 'Pokémon LEGENDS アルセウス RTA',
     locale: 'ja_JP',
     type: 'website',

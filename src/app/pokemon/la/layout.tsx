@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pokémon LEGENDS アルセウス RTA',
     description: 'Pokémon LEGENDS アルセウスのRTA（リアルタイムアタック）情報サイト。Tasks Simulator、チャート、参考記録などRTAに必要な情報をまとめています。',
-    url: 'https://rta.carimatics.com/pokemon/la',
+    url: 'https://carimatics.github.io/rta/pokemon/la',
     siteName: 'Pokémon LEGENDS アルセウス RTA',
     locale: 'ja_JP',
     type: 'website',

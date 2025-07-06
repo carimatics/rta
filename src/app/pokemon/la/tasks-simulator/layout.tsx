@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tasks Simulator | Pokémon LEGENDS アルセウス RTA',
     description: 'Pokémon LEGENDS アルセウスの図鑑タスクをシミュレートできるツール。ポイント計算や進捗管理を効率的に行い、RTAチャートの作成をサポートします。',
-    url: 'https://rta.carimatics.com/pokemon/la/tasks-simulator',
+    url: 'https://carimatics.github.io/rta/pokemon/la/tasks-simulator',
     siteName: 'Pokémon LEGENDS アルセウス RTA',
     locale: 'ja_JP',
     type: 'website',
