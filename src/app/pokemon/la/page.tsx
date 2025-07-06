@@ -177,12 +177,12 @@ export default function PokemonLegendsArceusPage() {
                 </span>
               </div>
               <p className="text-on-surface-variant text-sm mb-4">
-                Catch &apos;em All カテゴリのRTA記録チャート。セグメント別の詳細な進行状況とタスク達成データ。
+                Any%カテゴリの4時間切り目標の初心者用チャート
               </p>
               <div className="flex items-center justify-between">
                 <div className="text-sm text-on-surface-variant">
-                  <div>カテゴリ: Catch &apos;em All</div>
-                  <div>記録: 22時間47分</div>
+                  <div>カテゴリ: Any%</div>
+                  <div>参考記録: 3時間56分58秒</div>
                 </div>
                 <Link
                   href="/pokemon/la/charts/carimatics/20250505"
