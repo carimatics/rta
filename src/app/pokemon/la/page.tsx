@@ -56,7 +56,7 @@ export default function PokemonLegendsArceusPage() {
               </div>
               <h3 className="text-xl font-bold text-on-surface mb-4">オープンワールド</h3>
               <p className="text-on-surface-variant">
-                広大なヒスイ地方を自由に探索し、効率的なルート構築がRTAの鍵となります。
+                広大なヒスイ地方を自由に探索でき、効率的なルート構築がRTAの鍵となります。
               </p>
             </div>
 
