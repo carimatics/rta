@@ -164,7 +164,7 @@ export default function PokemonLegendsArceusPage() {
               RTAチャート
             </h2>
             <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-              セグメント別の進行状況やタスクの達成状況を確認できます。
+              区間ごとの大まかな進行状況や達成するタスクの一覧を確認できます。
             </p>
           </div>
 
