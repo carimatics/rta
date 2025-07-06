@@ -338,7 +338,7 @@ export default function PokemonLegendsArceusPage() {
             </a>
 
             <a
-              href="https://twitter.com/carimatica"
+              href="https://twitter.com/carimatics"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative bg-gradient-to-br from-[#1DA1F2]/5 to-[#1DA1F2]/10 hover:from-[#1DA1F2]/10 hover:to-[#1DA1F2]/20 rounded-2xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-xl border border-[#1DA1F2]/20 hover:border-[#1DA1F2]/30 text-center overflow-hidden"
