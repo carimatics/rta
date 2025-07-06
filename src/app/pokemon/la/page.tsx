@@ -233,13 +233,16 @@ export default function PokemonLegendsArceusPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
             <a
               href="https://www.speedrun.com/pkmnla"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
             >
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">🏃</span>
+              </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">Speedrun.com</h3>
               <p className="text-on-surface-variant text-sm">
                 公式リーダーボードと記録投稿
@@ -252,6 +255,9 @@ export default function PokemonLegendsArceusPage() {
               rel="noopener noreferrer"
               className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
             >
+              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">📚</span>
+              </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">ポケットモンスターRTAwiki</h3>
               <p className="text-on-surface-variant text-sm">
                 詳細な攻略チャートとルート解説
@@ -264,6 +270,9 @@ export default function PokemonLegendsArceusPage() {
               rel="noopener noreferrer"
               className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
             >
+              <div className="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">📖</span>
+              </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">Bulbapedia</h3>
               <p className="text-on-surface-variant text-sm">
                 ゲーム情報とデータベース
@@ -276,6 +285,9 @@ export default function PokemonLegendsArceusPage() {
               rel="noopener noreferrer"
               className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
             >
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">🌐</span>
+              </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">Serebii.net</h3>
               <p className="text-on-surface-variant text-sm">
                 包括的なゲーム攻略情報
@@ -298,18 +310,18 @@ export default function PokemonLegendsArceusPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-8">
             <a
               href="https://discord.gg/cd67NmWM"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#5865F2]/10 to-[#5865F2]/20 hover:from-[#5865F2]/20 hover:to-[#5865F2]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#5865F2]/30 text-center"
+              className="bg-gradient-to-br from-[#5865F2]/10 to-[#5865F2]/20 hover:from-[#5865F2]/20 hover:to-[#5865F2]/30 rounded-xl p-8 transition-all duration-200 hover:scale-105 border border-[#5865F2]/30 text-center"
             >
-              <div className="w-12 h-12 bg-[#5865F2] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">D</span>
+              <div className="w-16 h-16 bg-[#5865F2] rounded-lg flex items-center justify-center mx-auto mb-6">
+                <span className="text-white font-bold text-xl">D</span>
               </div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">Discord</h3>
-              <p className="text-on-surface-variant text-sm">
+              <h3 className="text-xl font-bold text-on-surface mb-3">Discord</h3>
+              <p className="text-on-surface-variant">
                 pokemonRTA<br />
                 RTAコミュニティのDiscordサーバー
               </p>
@@ -319,13 +331,13 @@ export default function PokemonLegendsArceusPage() {
               href="https://twitter.com/carimatica"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#1DA1F2]/10 to-[#1DA1F2]/20 hover:from-[#1DA1F2]/20 hover:to-[#1DA1F2]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#1DA1F2]/30 text-center"
+              className="bg-gradient-to-br from-[#1DA1F2]/10 to-[#1DA1F2]/20 hover:from-[#1DA1F2]/20 hover:to-[#1DA1F2]/30 rounded-xl p-8 transition-all duration-200 hover:scale-105 border border-[#1DA1F2]/30 text-center"
             >
-              <div className="w-12 h-12 bg-[#1DA1F2] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">𝕏</span>
+              <div className="w-16 h-16 bg-[#1DA1F2] rounded-lg flex items-center justify-center mx-auto mb-6">
+                <span className="text-white font-bold text-xl">𝕏</span>
               </div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">X (Twitter)</h3>
-              <p className="text-on-surface-variant text-sm">
+              <h3 className="text-xl font-bold text-on-surface mb-3">X (Twitter)</h3>
+              <p className="text-on-surface-variant">
                 かっこ @carimatics<br /> (当サイトの作者)
               </p>
             </a>
