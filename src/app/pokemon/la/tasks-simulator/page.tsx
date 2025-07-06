@@ -350,14 +350,14 @@ function TaskSimulatorContent() {
   );
 
   const renderTasksTab = () => (
-    <div className="flex gap-6 h-full">
+    <div className="flex flex-col lg:flex-row gap-6 h-full">
       <div className="flex-1 flex flex-col gap-6">
         {/* Pokemon Info Header */}
         <PrimaryContainer>
           <div className="p-4">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0">
                   <PokemonImage
                     pokemon={currentPokemon!}
                     size={200}
@@ -365,15 +365,15 @@ function TaskSimulatorContent() {
                     className="object-contain object-center"
                   />
                 </div>
-                <div>
-                  <div className="text-xl font-bold text-on-surface">
+                <div className="min-w-0">
+                  <div className="text-lg sm:text-xl font-bold text-on-surface truncate">
                     No. {currentPokemon!.id} - {currentPokemon!.name}
                   </div>
-                  <div className="text-sm text-on-surface-variant">
-                    Points: <span className="font-semibold text-primary">{currentPokemon!.points}</span> • 
-                    Status: <span className={`font-semibold ${currentPokemon!.completed ? 'text-tertiary' : 'text-on-surface-variant'}`}>
+                  <div className="text-sm text-on-surface-variant flex flex-wrap gap-x-4">
+                    <span>Points: <span className="font-semibold text-primary">{currentPokemon!.points}</span></span>
+                    <span>Status: <span className={`font-semibold ${currentPokemon!.completed ? 'text-tertiary' : 'text-on-surface-variant'}`}>
                       {currentPokemon!.completed ? 'Completed' : 'In Progress'}
-                    </span>
+                    </span></span>
                   </div>
                 </div>
               </div>
@@ -381,14 +381,26 @@ function TaskSimulatorContent() {
           </div>
         </PrimaryContainer>
 
+        {/* Segment Points Display - Mobile */}
+        <div className="lg:hidden">
+          <PrimaryContainer>
+            <div className="p-4">
+              <SegmentPointsDisplay
+                pokemon={currentPokemon!}
+                segments={segments}
+              />
+            </div>
+          </PrimaryContainer>
+        </div>
+
         {/* Task Management */}
         <PrimaryContainer className="flex-1">
           <div className="p-4 h-full flex flex-col">
-            <div className="flex items-center justify-between mb-4 pr-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
               <h3 className="text-lg font-bold text-on-surface">Task Management</h3>
               <Button
                 color="error"
-                className="size-10 flex items-center justify-center rounded-full hover:scale-105 transition-transform"
+                className="size-10 flex items-center justify-center rounded-full hover:scale-105 transition-transform self-start sm:self-auto"
                 onClick={() => resetPokemon({ pokemon: currentPokemon!.id })}
                 title="Reset Pokemon Progress">
                 <svg
@@ -402,26 +414,28 @@ function TaskSimulatorContent() {
                 </svg>
               </Button>
             </div>
-            <div className="flex items-center gap-2 mb-2 px-2">
-              <span className="text-sm text-on-surface-variant">Segment:</span>
-              <div className="min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 px-2">
+              <span className="text-sm text-on-surface-variant flex-shrink-0">Segment:</span>
+              <div className="min-w-0 w-full sm:w-auto">
                 <SegmentSelect
                   segments={segments}
                   currentSegment={currentSegment}
                   updateSegment={(segment) => setCurrentSegment(segment)} />
               </div>
             </div>
-            <div className="flex-1 overflow-x-auto">
-              <TaskTable
-                pokemon={currentPokemon!}
-                updateProgress={updateProgress} />
+            <div className="flex-1 overflow-x-auto -mx-4 px-4">
+              <div className="min-w-[800px]">
+                <TaskTable
+                  pokemon={currentPokemon!}
+                  updateProgress={updateProgress} />
+              </div>
             </div>
           </div>
         </PrimaryContainer>
       </div>
       
-      {/* Segment Points Display - Right Side */}
-      <div className="w-64 flex-shrink-0">
+      {/* Segment Points Display - Desktop */}
+      <div className="hidden lg:block w-64 flex-shrink-0">
         <PrimaryContainer className="h-full">
           <div className="p-4">
             <SegmentPointsDisplay
