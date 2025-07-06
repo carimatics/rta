@@ -64,9 +64,9 @@ export default function PokemonLegendsArceusPage() {
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
                 <span className="text-2xl">📋</span>
               </div>
-              <h3 className="text-xl font-bold text-on-surface mb-4">リサーチタスク</h3>
+              <h3 className="text-xl font-bold text-on-surface mb-4">図鑑タスク</h3>
               <p className="text-on-surface-variant">
-                ポケモンの調査タスクシステムが特徴的で、効率的なタスク管理が重要です。
+                ポケモンの図鑑タスクシステムが特徴的で、効率的なタスク管理が重要です。
               </p>
             </div>
             
