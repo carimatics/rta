@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/pokemon/la/images/og-image.png',
+        url: '/rta/pokemon/la/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Pokémon LEGENDS アルセウス RTA',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Pokémon LEGENDS アルセウス RTA',
     description: 'Pokémon LEGENDS アルセウスのRTA（リアルタイムアタック）情報サイト',
     creator: '@carimatica',
-    images: ['/pokemon/la/images/og-image.png'],
+    images: ['/rta/pokemon/la/images/og-image.png'],
   },
   robots: {
     index: true,

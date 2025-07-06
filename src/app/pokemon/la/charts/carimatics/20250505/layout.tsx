@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/pokemon/la/images/og-image.png',
+        url: '/rta/pokemon/la/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Carimatics Chart - Pokémon LEGENDS アルセウス RTA',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Carimatics Chart (2025/05/05) | Pokémon LEGENDS アルセウス RTA',
     description: 'CarmaticsによるPokémon LEGENDS アルセウス Any%カテゴリの4時間切り目標の初心者用RTAチャート',
     creator: '@carimatica',
-    images: ['/pokemon/la/images/og-image.png'],
+    images: ['/rta/pokemon/la/images/og-image.png'],
   },
   robots: {
     index: true,
