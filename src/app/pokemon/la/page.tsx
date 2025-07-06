@@ -388,7 +388,7 @@ export default function PokemonLegendsArceusPage() {
           <p className="text-on-surface-variant">
             このサイトは任天堂株式会社とは一切関係ありません。
             <br />
-            Pokémon LEGENDS アルセウスのRTAコミュニティによって作成された非公式ツールです。
+            Pokémon LEGENDS アルセウスの走者によって作成された非公式ツールです。
           </p>
         </div>
       </footer>
