@@ -6,6 +6,7 @@ import { ChartHeader } from './chart-header';
 import { ExportOnlyTab } from './export-only-tab';
 import { ReadonlyOverviewTab } from './readonly-overview-tab';
 import { ReadonlyTasksTab } from './readonly-tasks-tab';
+import { ReferenceVideoTab } from './reference-video-tab';
 import { TaskTimelineTab } from './task-timeline-tab';
 
 import { getDictionary } from '@/lib/pokemon/la/dictionaries';
@@ -33,6 +34,7 @@ export function ChartViewer({
     { id: 'overview' as ChartTabType, name: 'Overview', icon: '📊' },
     { id: 'tasks' as ChartTabType, name: 'Tasks', icon: '✅' },
     { id: 'task-timeline' as ChartTabType, name: 'Task Timeline', icon: '📅' },
+    { id: 'reference-video' as ChartTabType, name: 'Reference Video', icon: '🎥' },
     { id: 'export' as ChartTabType, name: 'Export', icon: '💾' },
   ];
 
@@ -99,6 +101,9 @@ export function ChartViewer({
               pokedexState={chartData.pokedexState}
               dictionary={dictionary}
             />
+          )}
+          {activeTab === 'reference-video' && (
+            <ReferenceVideoTab />
           )}
           {activeTab === 'export' && (
             <ExportOnlyTab

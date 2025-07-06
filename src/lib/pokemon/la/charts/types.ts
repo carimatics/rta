@@ -18,4 +18,4 @@ export interface ChartViewerProps {
   readonly?: boolean;
 }
 
-export type ChartTabType = 'overview' | 'tasks' | 'task-timeline' | 'export';
+export type ChartTabType = 'overview' | 'tasks' | 'task-timeline' | 'reference-video' | 'export';
