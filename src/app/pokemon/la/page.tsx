@@ -244,12 +244,12 @@ export default function PokemonLegendsArceusPage() {
             </a>
 
             <a
-              href="https://docs.google.com/spreadsheets/d/1S5bCmVr9k_oQOlF_KBx-0zLKzQ1R-_6ZUQ9J_3xqQXc"
+              href="https://w.atwiki.jp/pokemonrta/pages/185.html"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
             >
-              <h3 className="text-lg font-bold text-on-surface mb-2">RTA ガイド</h3>
+              <h3 className="text-lg font-bold text-on-surface mb-2">ポケットモンスターRTAwiki</h3>
               <p className="text-on-surface-variant text-sm">
                 詳細な攻略チャートとルート解説
               </p>
@@ -279,29 +279,6 @@ export default function PokemonLegendsArceusPage() {
               </p>
             </a>
 
-            <a
-              href="https://github.com/Lincoln-LM/pla-reverse-gui"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
-            >
-              <h3 className="text-lg font-bold text-on-surface mb-2">PLA Tools</h3>
-              <p className="text-on-surface-variant text-sm">
-                RTA支援ツールとリソース
-              </p>
-            </a>
-
-            <a
-              href="https://www.youtube.com/results?search_query=pokemon+legends+arceus+speedrun"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10"
-            >
-              <h3 className="text-lg font-bold text-on-surface mb-2">YouTube</h3>
-              <p className="text-on-surface-variant text-sm">
-                RTA動画とチュートリアル
-              </p>
-            </a>
           </div>
         </div>
       </section>
