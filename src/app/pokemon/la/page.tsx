@@ -24,7 +24,7 @@ export default function PokemonLegendsArceusPage() {
                 href="/pokemon/la/tasks-simulator"
                 className="bg-primary hover:bg-primary/90 text-on-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:scale-105 shadow-lg"
               >
-                Task Simulator を使う
+                Tasks Simulator を使う
               </Link>
               <Link
                 href="/pokemon/la/charts/carimatics/20250505"
@@ -48,28 +48,28 @@ export default function PokemonLegendsArceusPage() {
               ポケモン LEGENDS アルセウスは、従来のポケモンシリーズとは異なる革新的なゲームプレイを特徴としています。
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-surface-container rounded-xl p-8 shadow-sm border border-outline/10">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-2xl">🎯</span>
+                <span className="text-2xl">⛰️</span>
               </div>
               <h3 className="text-xl font-bold text-on-surface mb-4">オープンワールド</h3>
               <p className="text-on-surface-variant">
                 広大なヒスイ地方を自由に探索し、効率的なルート構築がRTAの鍵となります。
               </p>
             </div>
-            
+
             <div className="bg-surface-container rounded-xl p-8 shadow-sm border border-outline/10">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
                 <span className="text-2xl">📋</span>
               </div>
               <h3 className="text-xl font-bold text-on-surface mb-4">図鑑タスク</h3>
               <p className="text-on-surface-variant">
-                ポケモンの図鑑タスクシステムが特徴的で、効率的なタスク管理が重要です。
+                ポケモン図鑑のタスクシステムが特徴的で、効率的なタスク管理が重要です。
               </p>
             </div>
-            
+
             <div className="bg-surface-container rounded-xl p-8 shadow-sm border border-outline/10">
               <div className="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-6">
                 <span className="text-2xl">⚡</span>
@@ -91,7 +91,7 @@ export default function PokemonLegendsArceusPage() {
               RTAカテゴリ
             </h2>
             <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-              ポケモン LEGENDS アルセウスの主要なRTAカテゴリをご紹介します。
+              Pokémon LEGENDS アルセウスの主要なRTAカテゴリをご紹介します。
             </p>
           </div>
 
@@ -103,8 +103,8 @@ export default function PokemonLegendsArceusPage() {
               </p>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-on-surface-variant">目標時間:</span>
-                  <span className="font-semibold text-on-surface">4-6時間</span>
+                  <span className="text-on-surface-variant">所要時間:</span>
+                  <span className="font-semibold text-on-surface">約4時間</span>
                 </div>
               </div>
             </div>
@@ -112,12 +112,12 @@ export default function PokemonLegendsArceusPage() {
             <div className="bg-surface-container rounded-xl p-8 shadow-sm border border-outline/10">
               <h3 className="text-2xl font-bold text-on-surface mb-4">Catch &apos;em All</h3>
               <p className="text-on-surface-variant mb-6">
-                全てのポケモンの図鑑完成を目指すカテゴリ。タスク管理とルート最適化が重要になります。
+                全てのポケモンの捕獲を目指すカテゴリ。基礎動作精度、効率的なルート管理、リソース管理だけでなく豪運が必要です。
               </p>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-on-surface-variant">目標時間:</span>
-                  <span className="font-semibold text-on-surface">15-25時間</span>
+                  <span className="text-on-surface-variant">所要時間:</span>
+                  <span className="font-semibold text-on-surface">約8時間</span>
                 </div>
               </div>
             </div>
@@ -139,16 +139,16 @@ export default function PokemonLegendsArceusPage() {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-8 border border-primary/20">
-              <h3 className="text-2xl font-bold text-on-surface mb-4">Task Simulator</h3>
+              <h3 className="text-2xl font-bold text-on-surface mb-4">Tasks Simulator</h3>
               <p className="text-on-surface-variant mb-6">
-                リサーチタスクの進行状況をシミュレートし、最適なルートを見つけることができます。
+                図鑑タスクの進行状況をシミュレートし、簡単にチャートを作成することができます。
                 ポイント計算や進捗管理を効率的に行えます。
               </p>
               <Link
                 href="/pokemon/la/tasks-simulator"
                 className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors"
               >
-                Task Simulator を開く
+                Tasks Simulator を開く
                 <span className="ml-2">→</span>
               </Link>
             </div>
@@ -169,7 +169,8 @@ export default function PokemonLegendsArceusPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10 group">
+            <div
+              className="bg-surface-container hover:bg-surface-container-high rounded-xl p-6 transition-all duration-200 hover:scale-105 shadow-sm border border-outline/10 group">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-on-surface">Carimatics Chart</h3>
                 <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
@@ -195,17 +196,19 @@ export default function PokemonLegendsArceusPage() {
             </div>
 
             {/* Placeholder for future charts */}
-            <div className="bg-surface-container/50 rounded-xl p-6 border border-outline/10 border-dashed flex flex-col items-center justify-center text-center">
+            <div
+              className="bg-surface-container/50 rounded-xl p-6 border border-outline/10 border-dashed flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center mb-4">
                 <span className="text-2xl text-on-surface-variant">📊</span>
               </div>
               <h3 className="text-lg font-semibold text-on-surface-variant mb-2">新しいチャート</h3>
               <p className="text-sm text-on-surface-variant">
-                今後、新しいRTAチャートが追加される予定です
+                今後、新しいチャートが追加されるかもしれません
               </p>
             </div>
 
-            <div className="bg-surface-container/50 rounded-xl p-6 border border-outline/10 border-dashed flex flex-col items-center justify-center text-center">
+            <div
+              className="bg-surface-container/50 rounded-xl p-6 border border-outline/10 border-dashed flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center mb-4">
                 <span className="text-2xl text-on-surface-variant">📈</span>
               </div>
@@ -291,13 +294,13 @@ export default function PokemonLegendsArceusPage() {
               コミュニティ
             </h2>
             <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-              PLA RTAコミュニティに参加して、情報交換や質問をしましょう。
+              RTAコミュニティに参加して、情報交換や質問をしましょう。
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <a
-              href="https://discord.gg/pokemonspeedruns"
+              href="https://discord.gg/cd67NmWM"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-br from-[#5865F2]/10 to-[#5865F2]/20 hover:from-[#5865F2]/20 hover:to-[#5865F2]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#5865F2]/30 text-center"
@@ -307,12 +310,12 @@ export default function PokemonLegendsArceusPage() {
               </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">Discord</h3>
               <p className="text-on-surface-variant text-sm">
-                ポケモンRTAコミュニティ
+                pokemonRTA
               </p>
             </a>
 
             <a
-              href="https://twitter.com/search?q=pokemon%20legends%20arceus%20speedrun"
+              href="https://twitter.com/carimatica"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-br from-[#1DA1F2]/10 to-[#1DA1F2]/20 hover:from-[#1DA1F2]/20 hover:to-[#1DA1F2]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#1DA1F2]/30 text-center"
@@ -322,37 +325,7 @@ export default function PokemonLegendsArceusPage() {
               </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">X (Twitter)</h3>
               <p className="text-on-surface-variant text-sm">
-                RTA記録とニュース
-              </p>
-            </a>
-
-            <a
-              href="https://www.twitch.tv/directory/game/Pok%C3%A9mon%20Legends%3A%20Arceus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#9146FF]/10 to-[#9146FF]/20 hover:from-[#9146FF]/20 hover:to-[#9146FF]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#9146FF]/30 text-center"
-            >
-              <div className="w-12 h-12 bg-[#9146FF] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">T</span>
-              </div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">Twitch</h3>
-              <p className="text-on-surface-variant text-sm">
-                ライブ配信とVOD
-              </p>
-            </a>
-
-            <a
-              href="https://www.reddit.com/r/speedrun/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#FF4500]/10 to-[#FF4500]/20 hover:from-[#FF4500]/20 hover:to-[#FF4500]/30 rounded-xl p-6 transition-all duration-200 hover:scale-105 border border-[#FF4500]/30 text-center"
-            >
-              <div className="w-12 h-12 bg-[#FF4500] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold">R</span>
-              </div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">Reddit</h3>
-              <p className="text-on-surface-variant text-sm">
-                ディスカッションとTips
+                かっこ @carimatics<br /> (当サイトの作者)
               </p>
             </a>
           </div>
@@ -365,7 +338,7 @@ export default function PokemonLegendsArceusPage() {
           <p className="text-on-surface-variant">
             このサイトは任天堂株式会社とは一切関係ありません。
             <br />
-            Pokémon LEGENDS アルセウスの走者によって作成された非公式ツールです。
+            Pokémon LEGENDS アルセウスの走者によって個人的に作成された趣味サイトです。
           </p>
         </div>
       </footer>
