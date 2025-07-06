@@ -15,7 +15,7 @@ export default function PokemonLegendsArceusPage() {
               Pokémon <span className="text-primary">LEGENDS</span> アルセウス
             </h1>
             <p className="text-xl sm:text-2xl text-on-surface-variant mb-8 max-w-3xl mx-auto">
-              シンオウ地方の過去を舞台にした革新的なポケモンゲームの
+              シンオウ地方の過去を舞台にした革新的なポケモン作品の<br />
               <span className="text-primary font-semibold">RTA（リアルタイムアタック）</span>
               の世界へようこそ
             </p>
@@ -45,7 +45,7 @@ export default function PokemonLegendsArceusPage() {
               ゲーム概要
             </h2>
             <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-              Pokémon LEGENDS アルセウスは、従来のポケモンシリーズとは異なる革新的なゲームプレイを特徴としています。
+              Pokémon LEGENDS アルセウスは、従来のポケモンシリーズとは異なる革新的な<br />ゲームプレイを特徴としています。
             </p>
           </div>
 
@@ -310,7 +310,8 @@ export default function PokemonLegendsArceusPage() {
               </div>
               <h3 className="text-lg font-bold text-on-surface mb-2">Discord</h3>
               <p className="text-on-surface-variant text-sm">
-                pokemonRTA
+                pokemonRTA<br />
+                RTAコミュニティのDiscordサーバー
               </p>
             </a>
 
