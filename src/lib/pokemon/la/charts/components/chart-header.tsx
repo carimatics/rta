@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
 
 import { Language } from '@/lib/pokemon/la/fixtures';
@@ -31,12 +32,23 @@ export const ChartHeader: React.FC<ChartHeaderProps> = ({
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <span className="text-lg">📊</span>
-              <h1 className="text-xl font-bold text-on-surface">{title}</h1>
+              <Link 
+                href="/pokemon/la"
+                className="text-xl font-bold text-on-surface hover:text-primary transition-colors"
+              >
+                {title}
+              </Link>
             </div>
             {subtitle && (
-              <span className="hidden sm:inline-block text-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
-                {subtitle}
-              </span>
+              <>
+                <span className="text-on-surface-variant">|</span>
+                <Link
+                  href="/pokemon/la"
+                  className="hidden sm:inline-block text-sm text-on-surface-variant hover:text-on-surface bg-surface-container-high hover:bg-surface-container-highest px-3 py-1 rounded-full transition-colors"
+                >
+                  {subtitle}
+                </Link>
+              </>
             )}
             {readonly && (
               <span className="text-xs text-on-surface-variant bg-error/10 border border-error/20 px-2 py-1 rounded-full">

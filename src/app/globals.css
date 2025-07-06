@@ -66,67 +66,69 @@
 
 @layer theme {
   [data-theme='pokemon-la'] {
-    /* Material 3 Color Scheme */
-    /* Primary */
-    --color-primary: #b19d8d;
-    --color-on-primary: #efefe1;
-    --color-primary-container: #b19d8d;
-    --color-on-primary-container: #473e39;
-    --color-primary-fixed: oklch(from var(--color-primary) calc(l * 70%) c h);
-    --color-primary-fixed-dim: #000;
-    --color-on-primary-fixed: #fff;
-    --color-on-primary-fixed-variant: #fff;
+    /* Pokémon LEGENDS Arceus - Hisui Region Color Scheme */
+    /* Inspired by ancient forests, mountains, and traditional Japanese landscapes */
+    
+    /* Primary - Sage Green (古代の森の色) */
+    --color-primary: #7a9471;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #a3c498;
+    --color-on-primary-container: #1d2e1a;
+    --color-primary-fixed: oklch(from var(--color-primary) calc(l * 85%) c h);
+    --color-primary-fixed-dim: #5c7555;
+    --color-on-primary-fixed: #ffffff;
+    --color-on-primary-fixed-variant: #1d2e1a;
 
-    /* Secondary */
-    --color-secondary: #2e44b5;
-    --color-on-secondary: #efe3e3;
-    --color-secondary-container: #fbf8ea;
-    --color-on-secondary-container: #283a4f;
-    --color-secondary-fixed: #000000;
-    --color-secondary-fixed-dim: #000;
-    --color-on-secondary-fixed: #fff;
-    --color-on-secondary-fixed-variant: #fff;
+    /* Secondary - Mountain Stone Blue (山岳の石色) */
+    --color-secondary: #546b7a;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #dce4ec;
+    --color-on-secondary-container: #111c24;
+    --color-secondary-fixed: #dce4ec;
+    --color-secondary-fixed-dim: #b0c9d5;
+    --color-on-secondary-fixed: #111c24;
+    --color-on-secondary-fixed-variant: #3c525e;
 
-    /* Tertiary */
-    --color-tertiary: #d8429f;
+    /* Tertiary - Ancient Gold (古代の金色) */
+    --color-tertiary: #8b7355;
     --color-on-tertiary: #ffffff;
-    --color-tertiary-container: #000;
-    --color-on-tertiary-container: #000;
-    --color-tertiary-fixed: #000;
-    --color-tertiary-fixed-dim: #000;
-    --color-on-tertiary-fixed: #fff;
-    --color-on-tertiary-fixed-variant: #fff;
+    --color-tertiary-container: #f4e8d0;
+    --color-on-tertiary-container: #2d1f0f;
+    --color-tertiary-fixed: #f4e8d0;
+    --color-tertiary-fixed-dim: #d7ccb4;
+    --color-on-tertiary-fixed: #2d1f0f;
+    --color-on-tertiary-fixed-variant: #705641;
 
-    /* Error */
-    --color-error: #b93a38;
+    /* Error - Natural Red Clay (自然の赤土) */
+    --color-error: #a6524a;
     --color-on-error: #ffffff;
-    --color-error-container: #ff00cc;
-    --color-on-error-container: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #410002;
 
-    /* Surface */
-    --color-surface: #ffffff;
-    --color-surface-dim: oklch(from var(--color-surface) calc(l * 80%) c h);
-    --color-surface-bright: oklch(from var(--color-surface) calc(l * 120%) c h);
-    --color-surface-container: #f7f1ed;
-    --color-surface-container-low: oklch(from var(--color-surface-container) calc(l * 120%) c h);
-    --color-surface-container-lowest: oklch(from var(--color-surface-container-low) calc(l * 120%) c h);
-    --color-surface-container-high: oklch(from var(--color-surface-container) calc(l * 80%) c h);
-    --color-surface-container-highest: oklch(from var(--color-surface-container-high) calc(l * 80%) c h);
-    --color-on-surface: #283a4f;
-    --color-on-surface-variant: #345b89;
+    /* Surface - Natural Paper/Parchment (自然な紙・羊皮紙色) */
+    --color-surface: #fef9f5;
+    --color-surface-dim: #dfd6d0;
+    --color-surface-bright: #fef9f5;
+    --color-surface-container: #f3ede8;
+    --color-surface-container-low: #f9f3ee;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-high: #ede7e2;
+    --color-surface-container-highest: #e8e1dc;
+    --color-on-surface: #1d1b18;
+    --color-on-surface-variant: #4a453f;
 
-    /* Outline */
-    --color-outline: #332d2d;
-    --color-outline-variant: #696d78;
+    /* Outline - Natural Brown (自然な茶色の境界) */
+    --color-outline: #7c766f;
+    --color-outline-variant: #ccc5be;
 
-    /* Inverse */
-    --color-inverse-surface: #000;
-    --color-inverse-on-surface: #fff;
-    --color-inverse-primary: #fff;
+    /* Inverse - Deep Forest Night (深い森の夜) */
+    --color-inverse-surface: #323027;
+    --color-inverse-on-surface: #f6f0ea;
+    --color-inverse-primary: #87b37c;
 
-    /* Other */
-    --color-scrim: #000;
-    --color-shadow: #000;
+    /* Other - Natural Shadows (自然な影) */
+    --color-scrim: #000000;
+    --color-shadow: #000000;
   }
 
   input[type='number']::-webkit-inner-spin-button,

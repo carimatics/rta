@@ -1,6 +1,7 @@
 'use client';
 
 import { createStore, Provider } from 'jotai';
+import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 import React from 'react';
 
@@ -486,10 +487,21 @@ function TaskSimulatorContent() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
-              <h1 className="text-xl font-bold text-on-surface">Tasks Simulator</h1>
-              <span className="hidden sm:inline-block text-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
-                Pokemon Legends: Arceus
-              </span>
+              <div className="flex items-center gap-3">
+                <Link 
+                  href="/pokemon/la"
+                  className="text-xl font-bold text-on-surface hover:text-primary transition-colors"
+                >
+                  Tasks Simulator
+                </Link>
+                <span className="text-on-surface-variant">|</span>
+                <Link
+                  href="/pokemon/la"
+                  className="hidden sm:inline-block text-sm text-on-surface-variant hover:text-on-surface bg-surface-container-high hover:bg-surface-container-highest px-3 py-1 rounded-full transition-colors"
+                >
+                  Pokemon Legends: Arceus
+                </Link>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               <select
