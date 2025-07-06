@@ -45,7 +45,7 @@ export default function PokemonLegendsArceusPage() {
               ゲーム概要
             </h2>
             <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-              ポケモン LEGENDS アルセウスは、従来のポケモンシリーズとは異なる革新的なゲームプレイを特徴としています。
+              Pokémon LEGENDS アルセウスは、従来のポケモンシリーズとは異なる革新的なゲームプレイを特徴としています。
             </p>
           </div>
 
